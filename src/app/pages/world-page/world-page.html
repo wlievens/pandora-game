@@ -1,0 +1,13 @@
+@let world = world$?.object | async;
+@if (world) {
+  <h1>{{ world.name }}</h1>
+
+  <div style="width: 100%; height: 900px;">
+    <pt-geo-map>
+      <pt-geo-map-control-navigation></pt-geo-map-control-navigation>
+      <pt-geo-map-control-scale></pt-geo-map-control-scale>
+      <pt-geo-map-control-globe></pt-geo-map-control-globe>
+      <pt-geo-map-layer-world-nations [worldId]="world.id"></pt-geo-map-layer-world-nations>
+    </pt-geo-map>
+  </div>
+}
