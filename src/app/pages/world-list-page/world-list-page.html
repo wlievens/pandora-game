@@ -9,8 +9,14 @@
         <mat-card-subtitle>{{ world.activePartyCount }} parties playing</mat-card-subtitle>
       </mat-card-title-group>
     </mat-card-header>
-    <img mat-card-image src="https://material.angular.dev/assets/img/examples/shiba2.jpg">
     <mat-card-content>
+      <div style="display: block; width: 260px; height: 260px;">
+        <pt-geo-map [fixed]="true" [projection]="'globe'" [center]="{lon: centerLongitude, lat: 0}">
+          <pt-geo-map-layer-world-territories [worldId]="world.id"></pt-geo-map-layer-world-territories>
+          <pt-geo-map-layer-world-nations [labels]="false" [worldId]="world.id"></pt-geo-map-layer-world-nations>
+        </pt-geo-map>
+      </div>
+
       <p>
         <b>Population:</b> {{ world.population | number: '1.0-0' }}<br>
         <b>Nations:</b> {{ world.nationCount | number: '1.0-0' }}<br>

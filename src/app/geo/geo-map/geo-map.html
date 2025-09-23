@@ -1,0 +1,6 @@
+<div #mapContainer style="height: 100%; width: 100%; background-color: var(--mat-sys-surface-container);">
+  @if (debug && map) {
+    <span
+      style="position: absolute; left: 5px; top: 5px; z-index: 100000;">Zoom: {{ map.getZoom() | number: '1.2-2' }}</span>
+  }
+</div>

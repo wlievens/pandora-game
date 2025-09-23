@@ -1,0 +1,4 @@
+@let government = government$?.object | async;
+@if (government) {
+  <h1> {{ government.title }}</h1>
+}
