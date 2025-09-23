@@ -3,21 +3,24 @@
 
   <a mat-button [routerLink]="['/worlds']">Worlds</a>
 
-  @let world = world$?.object | async;
+  @let self = self$ | async;
+  @let world = (world$?.object | async) || self?.currentWorld;
+
   @if (world) {
     <a mat-button [routerLink]="['/worlds', world.id]">{{ world.name }}</a>
 
     <a mat-button [routerLink]="['/worlds', world.id, 'nations']">Nations</a>
-
-    <a mat-button [routerLink]="['/worlds']">My Nation</a>
   }
-
-  @let self = self$ | async;
-
   @if (self) {
-    @let party = self.currentParty;
-    @if (party) {
-      <a mat-button [routerLink]="['/worlds']">My Party</a>
+    @if (world) {
+      @let nation = self.currentNation;
+      @let party = self.currentParty;
+      @if (nation) {
+        <a mat-button [routerLink]="['/worlds', world.id, 'governments', nation.id]">{{ nation.title }}</a>
+      }
+      @if (party) {
+        <a mat-button [routerLink]="['/worlds/', world.id, 'parties', party.id]">{{ party.name }}</a>
+      }
     }
     <a mat-button [routerLink]="['/worlds']">Profile</a>
     <a mat-button (click)="onLogin()">Sign Out</a>
