@@ -4,6 +4,8 @@ import {provideRouter} from '@angular/router';
 import {Configuration} from '../api';
 import {environment} from '../environments/environment';
 import {routes} from './app.routes';
+import {credentialsInterceptor} from './interceptors/credentials-interceptor';
+import {loginExpiredInterceptor} from './interceptors/login-expired-interceptor';
 
 const provideApiConfiguration = {
   provide: Configuration,
@@ -17,7 +19,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({eventCoalescing: true}),
     provideRouter(routes),
-    provideHttpClient(withInterceptors([])),
+    provideHttpClient(withInterceptors([credentialsInterceptor, loginExpiredInterceptor])),
     provideApiConfiguration,
   ]
 };

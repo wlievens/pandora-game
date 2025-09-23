@@ -17,9 +17,11 @@ html {
 }
 
 body {
-  // Default the application to a light color theme. This can be changed to
-  // `dark` to enable the dark color theme, or to `light dark` to defer to the
-  // user's system settings.
+  --flag-sm-height: 24px;
+  --flag-sm-width: calc(var(--flag-sm-height) * 3 / 2);
+  --flag-md-height: 56px; // same as a mat-form-field
+  --flag-md-width: calc(var(--flag-md-height) * 3 / 2);
+
   color-scheme: light;
 
   // Set a default background, font and text colors for the application using
@@ -48,4 +50,11 @@ body {
   @include mat.toolbar-overrides((
     container-background-color: var(--mat-sys-primary-container),
   ));
+}
+
+img.flag-image-sm {
+  width: var(--flag-sm-width);
+  height: var(--flag-sm-height);
+  border: 1px solid var(--mat-sys-outline);
+  vertical-align: middle;
 }

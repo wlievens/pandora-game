@@ -1,15 +1,32 @@
 <mat-toolbar>
+  <div class="expander"></div>
+
   <a mat-button [routerLink]="['/worlds']">Worlds</a>
 
-  <a mat-button [routerLink]="['/worlds']">World</a>
+  @let world = world$?.object | async;
+  @if (world) {
+    <a mat-button [routerLink]="['/worlds', world.id]">{{ world.name }}</a>
 
-  <a mat-button [routerLink]="['/worlds']">Nations</a>
+    <a mat-button [routerLink]="['/worlds', world.id, 'nations']">Nations</a>
 
-  <a mat-button [routerLink]="['/worlds']">My Nation</a>
+    <a mat-button [routerLink]="['/worlds']">My Nation</a>
+  }
 
-  <a mat-button [routerLink]="['/worlds']">My Party</a>
+  @let self = self$ | async;
 
-  <a mat-button [routerLink]="['/worlds']">Profile</a>
+  @if (self) {
+    @let party = self.currentParty;
+    @if (party) {
+      <a mat-button [routerLink]="['/worlds']">My Party</a>
+    }
+    <a mat-button [routerLink]="['/worlds']">Profile</a>
+    <a mat-button (click)="onLogin()">Sign Out</a>
+  }
+  @if (!self) {
+    <a mat-button (click)="onLogin()">Sign In</a>
+  }
+
+  <div class="expander"></div>
 </mat-toolbar>
 <div class="root-content-container">
   <router-outlet></router-outlet>

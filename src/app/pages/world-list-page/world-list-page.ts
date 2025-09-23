@@ -19,7 +19,7 @@ import {GameWorldService, WorldGameSummary} from '../../../api';
   styleUrl: './world-list-page.scss'
 })
 export class WorldListPage {
-  worlds$: Observable<Array<WorldGameSummary>>;
+  worlds$: Observable<WorldGameSummary[]>;
 
   constructor(
     private worldService: GameWorldService

@@ -2,6 +2,7 @@ import {Routes} from '@angular/router';
 import {BillPage} from './pages/bill-page/bill-page';
 import {ElectionPage} from './pages/election-page/election-page';
 import {GovernmentPage} from './pages/government-page/government-page';
+import {NationListPage} from './pages/nation-list-page/nation-list-page';
 import {NewspaperPage} from './pages/newspaper-page/newspaper-page';
 import {PartyCreatePage} from './pages/party-create-page/party-create-page';
 import {PartyPage} from './pages/party-page/party-page';
@@ -17,38 +18,47 @@ export const routes: Routes = [
   },
   {
     path: 'worlds/:worldId',
-    component: WorldPage
-  },
-  {
-    path: 'worlds/:worldId/bills/:billId',
-    component: BillPage
-  },
-  {
-    path: 'worlds/:worldId/elections/:electionId',
-    component: ElectionPage
-  },
-  {
-    path: 'worlds/:worldId/governments/:governmentId',
-    component: GovernmentPage
-  },
-  {
-    path: 'worlds/:worldId/newspaper',
-    component: NewspaperPage
-  },
-  {
-    path: 'worlds/:worldId/create-party',
-    component: PartyCreatePage
-  },
-  {
-    path: 'worlds/:worldId/parties/:partyId',
-    component: PartyPage
-  },
-  {
-    path: 'worlds/:worldId/persons/:personId',
-    component: PersonPage
-  },
-  {
-    path: 'worlds/:worldId/newspaper/:storyId',
-    component: StoryPage
+    children: [
+      {
+        path: '',
+        component: WorldPage
+      },
+      {
+        path: 'create-party',
+        component: PartyCreatePage
+      },
+      {
+        path: 'nations',
+        component: NationListPage
+      },
+      {
+        path: 'newspaper',
+        component: NewspaperPage
+      },
+      {
+        path: 'bills/:billId',
+        component: BillPage
+      },
+      {
+        path: 'elections/:electionId',
+        component: ElectionPage
+      },
+      {
+        path: 'governments/:governmentId',
+        component: GovernmentPage
+      },
+      {
+        path: 'parties/:partyId',
+        component: PartyPage
+      },
+      {
+        path: 'persons/:personId',
+        component: PersonPage
+      },
+      {
+        path: 'newspaper/:storyId',
+        component: StoryPage
+      },
+    ]
   },
 ];
