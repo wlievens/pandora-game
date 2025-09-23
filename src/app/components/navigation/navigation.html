@@ -16,10 +16,19 @@
       @let nation = self.currentNation;
       @let party = self.currentParty;
       @if (nation) {
-        <a mat-button [routerLink]="['/worlds', world.id, 'governments', nation.id]">{{ nation.title }}</a>
+        <a mat-button [routerLink]="['/worlds', world.id, 'governments', nation.id]">
+          <img class="flag-image-xs" [attr.src]="nation | governmentFlagUrl: world">
+          {{ nation.title }}
+        </a>
       }
       @if (party) {
-        <a mat-button [routerLink]="['/worlds/', world.id, 'parties', party.id]">{{ party.name }}</a>
+        <a mat-button [routerLink]="['/worlds/', world.id, 'parties', party.id]">
+          <span
+            style="border-top: 2px solid transparent; border-bottom: 2px solid transparent; padding-top: 3px; padding-bottom: 3px;"
+            [style.border-color]="party.color">
+            {{ party.name }}
+          </span>
+        </a>
       }
     }
     <a mat-button [routerLink]="['/worlds']">Profile</a>

@@ -17,6 +17,8 @@ html {
 }
 
 body {
+  --flag-xs-height: 16px;
+  --flag-xs-width: calc(var(--flag-xs-height) * 3 / 2);
   --flag-sm-height: 24px;
   --flag-sm-width: calc(var(--flag-sm-height) * 3 / 2);
   --flag-md-height: 56px; // same as a mat-form-field
@@ -50,6 +52,13 @@ body {
   @include mat.toolbar-overrides((
     container-background-color: var(--mat-sys-primary-container),
   ));
+}
+
+img.flag-image-xs {
+  width: var(--flag-xs-width);
+  height: var(--flag-xs-height);
+  border: 1px solid var(--mat-sys-outline);
+  vertical-align: middle;
 }
 
 img.flag-image-sm {

@@ -7,15 +7,17 @@ import {Observable} from 'rxjs';
 import {filter} from 'rxjs/operators';
 import {AuthenticationService, CurrentUser, GameWorldService, WorldGameFull} from '../../../api';
 import {LoadedObject} from '../../classes/loaded-object';
+import {GovernmentFlagUrlPipe} from '../../pipes/government-flag-url-pipe';
 
 @Component({
   selector: 'pt-navigation',
   imports: [
-    RouterOutlet,
-    RouterLink,
-    MatToolbar,
+    AsyncPipe,
+    GovernmentFlagUrlPipe,
     MatButton,
-    AsyncPipe
+    MatToolbar,
+    RouterLink,
+    RouterOutlet,
   ],
   templateUrl: './navigation.html',
   styleUrl: './navigation.scss'
