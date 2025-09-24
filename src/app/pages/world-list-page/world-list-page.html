@@ -14,6 +14,7 @@
         <pt-geo-map [fixed]="true" [projection]="'globe'" [center]="{lon: centerLongitude, lat: 0}">
           <pt-geo-map-layer-world-territories [worldId]="world.id"></pt-geo-map-layer-world-territories>
           <pt-geo-map-layer-world-nations [labels]="false" [worldId]="world.id"></pt-geo-map-layer-world-nations>
+          <pt-geo-map-layer-grid></pt-geo-map-layer-grid>
         </pt-geo-map>
       </div>
 

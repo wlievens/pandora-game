@@ -1,9 +1,17 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {LayerSpecification, SourceSpecification} from '@maplibre/maplibre-gl-style-spec';
-import maplibregl, {VectorTileSource} from 'maplibre-gl';
+import maplibregl, {MapMouseEvent, VectorTileSource} from 'maplibre-gl';
 import {environment} from '../../../environments/environment';
-import {TerritoryProperties} from '../geo-map-layer-world-territories/geo-map-layer-world-territories';
-import {GeoLayer, MapSelectionEvent, RenderedLayer, ZOOM_LIMITS} from '../geo-map/geo-map';
+import {GeoLayer, LayerEventHandler, MapSelectionEvent, RenderedLayer, ZOOM_LIMITS} from '../geo-map/geo-map';
+
+export interface NationProperties {
+  id: string;
+  name: string;
+  title: string;
+  color: string;
+  flag_id: string;
+  neighbors: string[];
+}
 
 @Component({
   selector: 'pt-geo-map-layer-world-nations',
@@ -23,7 +31,7 @@ export class GeoMapLayerWorldNations extends GeoLayer implements OnChanges {
   labels: boolean = true;
 
   @Output()
-  selected = new EventEmitter<MapSelectionEvent<TerritoryProperties>>();
+  selected = new EventEmitter<MapSelectionEvent<NationProperties>>();
 
   readonly layerKeyFill = `layer-fill-${this.sourceId}`;
   readonly layerKeyShading = `layer-shading-${this.sourceId}`;
@@ -125,9 +133,25 @@ export class GeoMapLayerWorldNations extends GeoLayer implements OnChanges {
         }
       );
     }
+
     const sources: { [key: string]: SourceSpecification } = {};
     sources[sourceId] = source;
-    return {sources, layers};
+
+    const handlers: LayerEventHandler[] = [
+      {
+        type: 'click',
+        layer: this.layerKeyFill,
+        callback: (event: MapMouseEvent) => {
+          const rawFeatures = event.target.queryRenderedFeatures(event.point, {layers: [this.layerKeyFill]});
+          const features: any[] = rawFeatures
+            .map(feature => feature.properties)
+            .map((feature: any) => ({...feature, neighbors: feature.neighbors ? JSON.parse(feature.neighbors) : []}));
+          this.selected.emit({features});
+        }
+      }
+    ];
+
+    return {sources, layers, handlers};
   }
 
   protected generateUrl(): string {

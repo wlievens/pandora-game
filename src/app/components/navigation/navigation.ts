@@ -8,6 +8,7 @@ import {filter} from 'rxjs/operators';
 import {AuthenticationService, CurrentUser, GameWorldService, WorldGameFull} from '../../../api';
 import {LoadedObject} from '../../classes/loaded-object';
 import {GovernmentFlagUrlPipe} from '../../pipes/government-flag-url-pipe';
+import {Icon} from '../icon/icon';
 
 @Component({
   selector: 'pt-navigation',
@@ -18,6 +19,7 @@ import {GovernmentFlagUrlPipe} from '../../pipes/government-flag-url-pipe';
     MatToolbar,
     RouterLink,
     RouterOutlet,
+    Icon,
   ],
   templateUrl: './navigation.html',
   styleUrl: './navigation.scss'

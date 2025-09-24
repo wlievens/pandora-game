@@ -67,3 +67,20 @@ img.flag-image-sm {
   border: 1px solid var(--mat-sys-outline);
   vertical-align: middle;
 }
+
+mat-toolbar {
+  a {
+    pt-icon {
+      vertical-align: middle;
+    }
+
+    vertical-align: middle;
+  }
+}
+
+h1 {
+  text-align: center;
+  width: 100%;
+  border-bottom: 1px solid var(--mat-sys-outline);
+  padding-bottom: 15px;
+}

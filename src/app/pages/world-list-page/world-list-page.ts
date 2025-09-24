@@ -5,6 +5,7 @@ import {MatCardModule} from '@angular/material/card';
 import {RouterLink} from '@angular/router';
 import {map, Observable} from 'rxjs';
 import {GameWorldService, WorldGameSummary} from '../../../api';
+import {GeoMapLayerGrid} from '../../geo/geo-map-layer-grid/geo-map-layer-grid';
 import {GeoMapLayerWorldNations} from '../../geo/geo-map-layer-world-nations/geo-map-layer-world-nations';
 import {GeoMapLayerWorldTerritories} from '../../geo/geo-map-layer-world-territories/geo-map-layer-world-territories';
 import {GeoMap} from '../../geo/geo-map/geo-map';
@@ -20,6 +21,7 @@ import {GeoMap} from '../../geo/geo-map/geo-map';
     GeoMapLayerWorldTerritories,
     GeoMap,
     GeoMapLayerWorldNations,
+    GeoMapLayerGrid,
   ],
   templateUrl: './world-list-page.html',
   styleUrl: './world-list-page.scss'

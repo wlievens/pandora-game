@@ -7,7 +7,11 @@
       <pt-geo-map-control-navigation></pt-geo-map-control-navigation>
       <pt-geo-map-control-scale></pt-geo-map-control-scale>
       <pt-geo-map-control-globe></pt-geo-map-control-globe>
-      <pt-geo-map-layer-world-nations [worldId]="world.id"></pt-geo-map-layer-world-nations>
+      <pt-geo-map-layer-world-nations
+        (selected)="onClickFeature(world, $event)"
+        [worldId]="world.id"
+      ></pt-geo-map-layer-world-nations>
+      <pt-geo-map-layer-grid></pt-geo-map-layer-grid>
     </pt-geo-map>
   </div>
 }

@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {GovernmentGameFull} from '../../../api';
 
 @Component({
   selector: 'pt-tab-government-executive',
@@ -7,5 +8,6 @@ import {Component} from '@angular/core';
   styleUrl: './tab-government-executive.scss'
 })
 export class TabGovernmentExecutive {
-
+  @Input()
+  government?: GovernmentGameFull;
 }

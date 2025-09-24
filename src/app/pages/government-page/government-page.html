@@ -1,13 +1,13 @@
 @let government = government$?.object | async;
 @if (government) {
-  <h1> {{ government.title }}</h1>
+  <h1>{{ government.title }}</h1>
   <mat-tab-group>
     <mat-tab>
       <ng-template mat-tab-label>
         Overview
       </ng-template>
 
-      TODO
+      <pt-tab-government-overview [government]="government"></pt-tab-government-overview>
     </mat-tab>
 
     <mat-tab>
@@ -15,7 +15,7 @@
         Executive
       </ng-template>
 
-      TODO
+      <pt-tab-government-executive [government]="government"></pt-tab-government-executive>
     </mat-tab>
 
     <mat-tab>
@@ -23,7 +23,7 @@
         Legislature
       </ng-template>
 
-      TODO
+      <pt-tab-government-legislature [government]="government"></pt-tab-government-legislature>
     </mat-tab>
 
     <mat-tab>
@@ -31,7 +31,7 @@
         Parties
       </ng-template>
 
-      TODO
+      <pt-tab-government-parties [government]="government"></pt-tab-government-parties>
     </mat-tab>
 
     <mat-tab>
@@ -39,7 +39,7 @@
         Territories
       </ng-template>
 
-      TODO
+      <pt-tab-government-territories [government]="government"></pt-tab-government-territories>
     </mat-tab>
 
     <mat-tab>
@@ -47,7 +47,7 @@
         Economy
       </ng-template>
 
-      TODO
+      <pt-tab-government-economy [government]="government"></pt-tab-government-economy>
     </mat-tab>
   </mat-tab-group>
 }

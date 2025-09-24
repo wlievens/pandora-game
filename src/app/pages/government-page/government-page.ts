@@ -4,14 +4,24 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {ActivatedRoute, Params} from '@angular/router';
 import {GameGovernmentService, GovernmentGameFull} from '../../../api';
 import {LoadedObject} from '../../classes/loaded-object';
-import {Icon} from '../../components/icon/icon';
+import {TabGovernmentEconomy} from '../../components/tab-government-economy/tab-government-economy';
+import {TabGovernmentExecutive} from '../../components/tab-government-executive/tab-government-executive';
+import {TabGovernmentLegislature} from '../../components/tab-government-legislature/tab-government-legislature';
+import {TabGovernmentOverview} from '../../components/tab-government-overview/tab-government-overview';
+import {TabGovernmentParties} from '../../components/tab-government-parties/tab-government-parties';
+import {TabGovernmentTerritories} from '../../components/tab-government-territories/tab-government-territories';
 
 @Component({
   selector: 'pt-government-page',
   imports: [
     AsyncPipe,
-    Icon,
     MatTabsModule,
+    TabGovernmentEconomy,
+    TabGovernmentExecutive,
+    TabGovernmentLegislature,
+    TabGovernmentOverview,
+    TabGovernmentParties,
+    TabGovernmentTerritories,
   ],
   templateUrl: './government-page.html',
   styleUrl: './government-page.scss'
