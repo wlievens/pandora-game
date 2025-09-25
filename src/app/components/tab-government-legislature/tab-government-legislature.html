@@ -1,1 +1,17 @@
-<pt-hemisphere-diagram [fractions]="[]"></pt-hemisphere-diagram>
+@let legislature = bodyLegislature$ | async;
+@if (legislature) {
+  <h2>{{ legislature.title }}</h2>
+
+  @let lowerChamber = bodyLowerChamber$ | async;
+  @let upperChamber = bodyUpperChamber$ | async;
+
+  <ng-template #bodyTemplate let-body="body">
+    @if (body) {
+      <h2>{{ body.name }}</h2>
+      <pt-hemisphere-diagram [fractions]="body.currentTerm?.fractions || []"></pt-hemisphere-diagram>
+    }
+  </ng-template>
+
+  <ng-container [ngTemplateOutlet]="bodyTemplate" [ngTemplateOutletContext]="{body: lowerChamber}"></ng-container>
+  <ng-container [ngTemplateOutlet]="bodyTemplate" [ngTemplateOutletContext]="{body: upperChamber}"></ng-container>
+}

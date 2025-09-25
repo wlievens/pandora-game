@@ -1,11 +1,10 @@
 import {AfterViewInit, Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
 import * as d3 from 'd3';
 import * as pc from 'd3-parliament-chart';
+import {PartyBase} from '../../../api';
 
 export interface HemisphereFraction {
-  name: string;
-  abbreviation: string;
-  color: string;
+  party: PartyBase;
   seats: number;
 }
 
@@ -35,15 +34,9 @@ export class HemisphereDiagram implements OnChanges, AfterViewInit {
   private updateView(): void {
     const root = d3.select(this.diagramRef.nativeElement);
     root.selectAll('*').remove();
-    root.append('g')
-      .call(
-        pc.parliamentChart()
-          .width(800)
-          .aggregatedData([
-            {'seats': 40, 'color': '#636cbb'},
-            {'seats': 30, 'color': '#26d050'},
-            {'seats': 50, 'color': '#315cee'}
-          ])
-      );
+    root.append('g').call(pc.parliamentChart().width(800).aggregatedData(this.fractions.map(fraction => ({
+      seats: fraction.seats,
+      color: fraction.party.color
+    }))));
   }
 }

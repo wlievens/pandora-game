@@ -23,7 +23,9 @@
         Legislature
       </ng-template>
 
-      <pt-tab-government-legislature [government]="government"></pt-tab-government-legislature>
+      <ng-template matTabContent>
+        <pt-tab-government-legislature [government]="government"></pt-tab-government-legislature>
+      </ng-template>
     </mat-tab>
 
     <mat-tab>
