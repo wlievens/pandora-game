@@ -2,6 +2,7 @@ import {AsyncPipe, NgTemplateOutlet} from '@angular/common';
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {BodyGameFull, BodyType, GameBodyService, GovernmentGameFull} from '../../../api';
+import {ColorBox} from '../color-box/color-box';
 import {HemisphereDiagram} from '../hemisphere-diagram/hemisphere-diagram';
 
 @Component({
@@ -10,6 +11,7 @@ import {HemisphereDiagram} from '../hemisphere-diagram/hemisphere-diagram';
     HemisphereDiagram,
     AsyncPipe,
     NgTemplateOutlet,
+    ColorBox,
   ],
   templateUrl: './tab-government-legislature.html',
   styleUrl: './tab-government-legislature.scss'

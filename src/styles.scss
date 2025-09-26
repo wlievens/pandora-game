@@ -87,3 +87,64 @@ h1, h2 {
   text-align: center;
   width: 100%;
 }
+
+.clickable {
+  cursor: pointer;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.nowrap {
+  text-wrap: nowrap;
+}
+
+.narrow {
+  width: 1px;
+  text-wrap: nowrap;
+}
+
+.wide {
+  width: 100%;
+}
+
+.compact-table {
+  border-collapse: collapse;
+
+  td, th {
+    padding: 10px;
+  }
+
+  th {
+    border-bottom: 1px solid var(--mat-sys-outline);
+    text-align: left;
+  }
+}
+
+.border-left {
+  border-left: 1px solid var(--mat-sys-outline);
+}
+
+.border-right {
+  border-right: 1px solid var(--mat-sys-outline);
+}
+
+.border-top {
+  border-top: 1px solid var(--mat-sys-outline);
+}
+
+.flex-horizontal-centered {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+}

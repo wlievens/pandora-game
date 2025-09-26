@@ -34,9 +34,20 @@ export class HemisphereDiagram implements OnChanges, AfterViewInit {
   private updateView(): void {
     const root = d3.select(this.diagramRef.nativeElement);
     root.selectAll('*').remove();
-    root.append('g').call(pc.parliamentChart().width(800).aggregatedData(this.fractions.map(fraction => ({
+    const data = this.fractions.map(fraction => ({
       seats: fraction.seats,
       color: fraction.party.color
-    }))));
+    }));
+    const seats = data.map(fraction => fraction.seats).reduce((a, b) => a + b, 0);
+    const sections = Math.ceil(seats / 80);
+    const seatRadius = Math.ceil(140 / Math.sqrt(seats));
+    root.append('g').call(pc.parliamentChart().width(800)
+      .aggregatedData(data)
+      .sectionGap(30)
+      .sections(sections)
+      .rowHeight(seatRadius * 3)
+      .seatRadius(seatRadius)
+      .debug(true)
+    );
   }
 }
