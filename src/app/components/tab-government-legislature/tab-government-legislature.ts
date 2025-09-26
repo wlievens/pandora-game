@@ -44,14 +44,6 @@ export class TabGovernmentLegislature implements OnChanges {
         this.bodyLegislature$ = loadBody(government, BodyType.Legislature);
         this.bodyLowerChamber$ = loadBody(government, BodyType.LowerChamber);
         this.bodyUpperChamber$ = loadBody(government, BodyType.UpperChamber);
-        /*
-        const legislativeBodyTypes: BodyType[] = [BodyType.Legislature, BodyType.LowerChamber, BodyType.UpperChamber];
-        forkJoin(government.bodies
-          .filter(body => legislativeBodyTypes.includes(body.type))
-          .map(body => this.bodyService.gameGetBodyById(worldId, body.id))
-        ).subscribe(bodies => {
-        });
-         */
       }
     }
   }

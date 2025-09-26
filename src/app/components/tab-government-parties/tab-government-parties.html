@@ -1,5 +1,21 @@
-<pre>
-  {{ government?.parties | json }}
-</pre>
+<div class="flex-horizontal-centered">
+  @if (compassPoints.length > 0) {
+    <pt-compass [size]="400" [pointRadiusFactor]="0.03" [points]="compassPoints"></pt-compass>
+  }
 
-<pt-compass [size]="400" [points]="[]"></pt-compass>
+  <mat-accordion class="example-headers-align" style="width: 400px;">
+    @for (party of parties; track party.id) {
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <pt-color-box [color]="party.color"/>
+            <span class="nowrap">{{ party.name }}</span>
+          </mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+    }
+  </mat-accordion>
+</div>
+

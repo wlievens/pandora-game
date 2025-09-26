@@ -148,3 +148,17 @@ h1, h2 {
   gap: 10px;
   justify-content: center;
 }
+
+mat-card-header {
+  mat-card-title {
+    text-align: center;
+  }
+}
+
+th.mat-mdc-header-cell {
+  user-select: none;
+}
+
+.mat-mdc-tab-label-container {
+  user-select: none;
+}

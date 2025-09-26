@@ -15,7 +15,9 @@
         Executive
       </ng-template>
 
-      <pt-tab-government-executive [government]="government"></pt-tab-government-executive>
+      <ng-template matTabContent>
+        <pt-tab-government-executive [government]="government"></pt-tab-government-executive>
+      </ng-template>
     </mat-tab>
 
     <mat-tab>
@@ -33,7 +35,9 @@
         Parties
       </ng-template>
 
-      <pt-tab-government-parties [government]="government"></pt-tab-government-parties>
+      <ng-template matTabContent>
+        <pt-tab-government-parties [government]="government"></pt-tab-government-parties>
+      </ng-template>
     </mat-tab>
 
     <mat-tab>

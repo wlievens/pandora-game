@@ -1,1 +1,8 @@
-<p>tab-government-executive works!</p>
+@let ruler = bodyRuler$|async;
+@let cabinet = bodyCabinet$|async;
+@if (ruler) {
+  <pre><code>{{ ruler|json }}</code></pre>
+}
+@if (cabinet) {
+  <pre><code>{{ cabinet|json }}</code></pre>
+}
