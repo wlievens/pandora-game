@@ -1,0 +1,27 @@
+<table class="compact-table">
+  <thead>
+  <th class="text-left" colspan="2">Party</th>
+  <th class="text-right">Seats</th>
+  </thead>
+  <tbody>
+    @for (fraction of fractions; track fraction) {
+      <tr>
+        <td>
+          <pt-color-box [color]="fraction.party.color"/>
+        </td>
+        <td>
+          {{ fraction.party.name }}
+        </td>
+        <td class="text-right">
+          {{ fraction.seats }}
+        </td>
+      </tr>
+    }
+  </tbody>
+  <tfoot>
+  <tr class="border-top">
+    <td colspan="2"><b>Total</b></td>
+    <td class="text-right">{{ totalSeats }}</td>
+  </tr>
+  </tfoot>
+</table>

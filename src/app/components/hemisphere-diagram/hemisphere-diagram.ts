@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild} from '@angular/core';
 import * as d3 from 'd3';
 import * as pc from 'd3-parliament-chart';
-import {PartyBase} from '../../../api';
+import {FractionGameFull, PartyBase} from '../../../api';
 
 export interface HemisphereFraction {
   party: PartyBase;
@@ -16,7 +16,7 @@ export interface HemisphereFraction {
 })
 export class HemisphereDiagram implements OnChanges, AfterViewInit {
   @Input()
-  fractions: HemisphereFraction[] = [];
+  fractions: FractionGameFull[] = [];
 
   @ViewChild('diagram', {static: true})
   private diagramRef!: ElementRef<SVGSVGElement>;
