@@ -47,7 +47,6 @@ export class HemisphereDiagram implements OnChanges, AfterViewInit {
       .sections(sections)
       .rowHeight(seatRadius * 3)
       .seatRadius(seatRadius)
-      .debug(true)
     );
   }
 }

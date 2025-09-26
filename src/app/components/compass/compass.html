@@ -1,0 +1,90 @@
+<svg [attr.height]="size" [attr.width]="size">
+  <g style="font-size: 10pt;">
+    <rect
+      [attr.height]="size"
+      [attr.stroke]="borderColor"
+      [attr.width]="size"
+      [attr.x]="0"
+      [attr.y]="0"
+      fill="white"
+    ></rect>
+    @for (n of divisions | range: 1; track n) {
+      <line
+        [attr.stroke]="n == (divisions / 2) ? majorLineColor : minorLineColor"
+        [attr.x1]="size * n / divisions"
+        [attr.x2]="size * n / divisions"
+        [attr.y1]="0"
+        [attr.y2]="size"
+      ></line>
+      <line
+        [attr.stroke]="n == (divisions / 2) ? majorLineColor : minorLineColor"
+        [attr.x1]="0"
+        [attr.x2]="size"
+        [attr.y1]="size * n / divisions"
+        [attr.y2]="size * n / divisions"
+      ></line>
+    }
+    @if (labelAxes) {
+      <g [attr.fill]="textColor" [attr.stroke]="haloColor" stroke-width="4px">
+        <text [attr.x]="textMarginX" [attr.y]="size / 2"
+              style="text-anchor: start; dominant-baseline: central;">
+          Left
+        </text>
+        <text [attr.x]="textMarginX" [attr.y]="size / 2"
+              style="text-anchor: start; dominant-baseline: central; stroke: none;">
+          Left
+        </text>
+        <text [attr.x]="size - textMarginX" [attr.y]="size / 2"
+              style="text-anchor: end; dominant-baseline: central;">
+          Right
+        </text>
+        <text [attr.x]="size - textMarginX" [attr.y]="size / 2"
+              style="text-anchor: end; dominant-baseline: central; stroke: none;">
+          Right
+        </text>
+        <text [attr.x]="size / 2 + textMarginX" [attr.y]="size - textMarginY1"
+              style="text-anchor: middle; dominant-baseline: central;">
+          Progressive
+        </text>
+        <text [attr.x]="size / 2 + textMarginX" [attr.y]="size - textMarginY1"
+              style="text-anchor: middle; dominant-baseline: central; stroke: none;">
+          Progressive
+        </text>
+        <text [attr.x]="size / 2 + textMarginX" [attr.y]="textMarginY2"
+              style="text-anchor: middle; dominant-baseline: central;">
+          Conservative
+        </text>
+        <text [attr.x]="size / 2 + textMarginX" [attr.y]="textMarginY2"
+              style="text-anchor: middle; dominant-baseline: central; stroke: none;">
+          Conservative
+        </text>
+      </g>
+    }
+    @for (point of points; track point) {
+      @let px = size * (0.5 + point.x / 2);
+      @let py = size * (0.5 - point.y / 2);
+      <circle
+        [attr.stroke]="pointOutlineColor"
+        [attr.fill]="point.color"
+        [attr.cx]="px"
+        [attr.cy]="py"
+        [attr.r]="size * pointRadiusFactor"
+      ></circle>
+      <text
+        [attr.fill]="haloColor"
+        [attr.stroke]="haloColor"
+        [attr.x]="px"
+        [attr.y]="py"
+        style="text-anchor: middle; dominant-baseline: central; stroke-width: 3;"
+      >{{ point.label }}
+      </text>
+      <text
+        [attr.fill]="textColor"
+        [attr.x]="px"
+        [attr.y]="py"
+        style="text-anchor: middle; dominant-baseline: central;"
+      >{{ point.label }}
+      </text>
+    }
+  </g>
+</svg>
