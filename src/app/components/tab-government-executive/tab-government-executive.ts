@@ -1,13 +1,18 @@
-import {AsyncPipe, JsonPipe} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {BodyGameFull, BodyType, GameBodyService, GovernmentGameFull} from '../../../api';
+import {FindTenurePipe} from '../../pipes/find-tenure-pipe';
+import {PortraitUrlPipe} from '../../pipes/portrait-url-pipe';
+import {ColorBox} from '../color-box/color-box';
 
 @Component({
   selector: 'pt-tab-government-executive',
   imports: [
     AsyncPipe,
-    JsonPipe
+    FindTenurePipe,
+    ColorBox,
+    PortraitUrlPipe,
   ],
   templateUrl: './tab-government-executive.html',
   styleUrl: './tab-government-executive.scss'

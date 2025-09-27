@@ -1,4 +1,4 @@
-import { GovernmentFlagUrlPipe } from './government-flag-url-pipe';
+import {GovernmentFlagUrlPipe} from './government-flag-url-pipe';
 
 describe('GovernmentFlagUrlPipe', () => {
   it('create an instance', () => {

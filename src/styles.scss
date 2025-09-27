@@ -24,6 +24,8 @@ body {
   --flag-md-height: 56px; // same as a mat-form-field
   --flag-md-width: calc(var(--flag-md-height) * 3 / 2);
 
+  --portrait-sm-size: 48px;
+
   color-scheme: light;
 
   // Set a default background, font and text colors for the application using
@@ -64,6 +66,13 @@ img.flag-image-xs {
 img.flag-image-sm {
   width: var(--flag-sm-width);
   height: var(--flag-sm-height);
+  border: 1px solid var(--mat-sys-outline);
+  vertical-align: middle;
+}
+
+img.portrait-image-sm {
+  width: var(--portrait-sm-size);
+  height: var(--portrait-sm-size);
   border: 1px solid var(--mat-sys-outline);
   vertical-align: middle;
 }

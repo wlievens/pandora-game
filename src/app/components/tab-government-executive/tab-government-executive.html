@@ -1,8 +1,67 @@
-@let ruler = bodyRuler$|async;
-@let cabinet = bodyCabinet$|async;
-@if (ruler) {
-  <pre><code>{{ ruler|json }}</code></pre>
-}
-@if (cabinet) {
-  <pre><code>{{ cabinet|json }}</code></pre>
+@if (government) {
+  @for (body of [bodyRuler$ | async, bodyCabinet$ | async]; track body?.id) {
+    @if (body) {
+      @let term = body.currentTerm;
+      @if (term) {
+        <h2>{{ term.title }}</h2>
+      } @else {
+        <h2>{{ body.title }}</h2>
+      }
+      <table class="compact-table">
+        <tbody>
+          @for (office of body.offices; track office.id) {
+            <tr>
+              <td style="width: 250px;"><b>{{ office.name }}</b></td>
+              <td>
+                @if (term) {
+                  @let tenure = term.tenures | findTenure: office.id;
+                  @if (tenure) {
+                    @let person = tenure.person;
+                    @if (person) {
+                      <img class="portrait-image-sm" [attr.src]="person | portraitUrl: government.world">
+                    }
+                  }
+                }
+              </td>
+              <td>
+                @if (term) {
+                  @let tenure = term.tenures | findTenure: office.id;
+                  @if (tenure) {
+                    @let person = tenure.person;
+                    @if (person) {
+                      {{ person.firstName }} {{ person.lastName }}
+                    } @else {
+                      <i>Vacant</i>
+                    }
+                  } @else {
+                    <i>Vacant</i>
+                  }
+                } @else {
+                  <i>Not Instituted</i>
+                }
+              </td>
+              <td>
+                @if (term) {
+                  @let tenure = term.tenures | findTenure: office.id;
+                  @if (tenure) {
+                    @let party = tenure.party;
+                    @if (party) {
+                      <pt-color-box [color]="party.color"/>
+                      {{ party.name }}
+                    } @else {
+                      <i>Vacant</i>
+                    }
+                  } @else {
+                    <i>Vacant</i>
+                  }
+                } @else {
+                  <i>Not Instituted</i>
+                }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    }
+  }
 }

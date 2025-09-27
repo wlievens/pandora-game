@@ -1,4 +1,4 @@
-import { FlagUrlPipe } from './flag-url-pipe';
+import {FlagUrlPipe} from './flag-url-pipe';
 
 describe('FlagUrlPipe', () => {
   it('create an instance', () => {
