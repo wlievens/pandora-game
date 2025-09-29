@@ -1,5 +1,6 @@
 import {AsyncPipe} from '@angular/common';
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {RouterLink} from '@angular/router';
 import {Observable, of} from 'rxjs';
 import {BodyGameFull, BodyType, GameBodyService, GovernmentGameFull} from '../../../api';
 import {FindTenurePipe} from '../../pipes/find-tenure-pipe';
@@ -13,6 +14,7 @@ import {ColorBox} from '../color-box/color-box';
     FindTenurePipe,
     ColorBox,
     PortraitUrlPipe,
+    RouterLink,
   ],
   templateUrl: './tab-government-executive.html',
   styleUrl: './tab-government-executive.scss'

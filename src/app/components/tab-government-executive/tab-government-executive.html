@@ -29,7 +29,9 @@
                   @if (tenure) {
                     @let person = tenure.person;
                     @if (person) {
-                      {{ person.firstName }} {{ person.lastName }}
+                      <a [routerLink]="['/worlds', government.world.id, 'persons', person.id]">
+                        {{ person.firstName }} {{ person.lastName }}
+                      </a>
                     } @else {
                       <i>Vacant</i>
                     }
