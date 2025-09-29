@@ -1,9 +1,22 @@
 @if (government) {
   @let world = government.world;
-  <img class="flag-image-lg" [attr.src]="government | governmentFlagUrl: world">
+
+  <div class="flex-horizontal-centered">
+    <img class="flag-image-lg" [attr.src]="government | governmentFlagUrl: world">
+
+    <div style="width: 300px; height: 300px;">
+      <pt-geo-map [projection]="'globe'" [center]="government.centroid || {lon: 0, lat: 0}" [fixed]="true"
+                  class="map-container">
+        <pt-geo-map-layer-background></pt-geo-map-layer-background>
+        <pt-geo-map-layer-world-nations [worldId]="world.id"></pt-geo-map-layer-world-nations>
+        <pt-geo-map-layer-grid></pt-geo-map-layer-grid>
+      </pt-geo-map>
+    </div>
+  </div>
 
   <div style="height: 600px;">
     <pt-geo-map [fitBounds]="$any(government.bounds)" class="map-container">
+      <pt-geo-map-layer-background></pt-geo-map-layer-background>
       <pt-geo-map-control-navigation></pt-geo-map-control-navigation>
       <pt-geo-map-layer-world-nations [worldId]="world.id"></pt-geo-map-layer-world-nations>
     </pt-geo-map>

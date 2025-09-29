@@ -1,6 +1,10 @@
 @let government = government$?.object | async;
 @if (government) {
-  <h1>{{ government.title }}</h1>
+  <h1>
+    <img class="flag-image-xs" [attr.src]="government | governmentFlagUrl: government.world">
+    {{ government.title }}
+    <img class="flag-image-xs" [attr.src]="government | governmentFlagUrl: government.world">
+  </h1>
   <mat-tab-group>
     <mat-tab>
       <ng-template mat-tab-label>

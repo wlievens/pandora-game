@@ -10,6 +10,7 @@ import {TabGovernmentLegislature} from '../../components/tab-government-legislat
 import {TabGovernmentOverview} from '../../components/tab-government-overview/tab-government-overview';
 import {TabGovernmentParties} from '../../components/tab-government-parties/tab-government-parties';
 import {TabGovernmentTerritories} from '../../components/tab-government-territories/tab-government-territories';
+import {GovernmentFlagUrlPipe} from '../../pipes/government-flag-url-pipe';
 
 @Component({
   selector: 'pt-government-page',
@@ -22,6 +23,7 @@ import {TabGovernmentTerritories} from '../../components/tab-government-territor
     TabGovernmentOverview,
     TabGovernmentParties,
     TabGovernmentTerritories,
+    GovernmentFlagUrlPipe,
   ],
   templateUrl: './government-page.html',
   styleUrl: './government-page.scss'
