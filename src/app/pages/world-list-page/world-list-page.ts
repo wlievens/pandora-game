@@ -4,7 +4,8 @@ import {MatButton} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {RouterLink} from '@angular/router';
 import {map, Observable} from 'rxjs';
-import {GameWorldService, WorldGameSummary} from '../../../api';
+import {AtlasCellType, GameWorldService, WorldGameSummary} from '../../../api';
+import {GeoMapLayerBackground} from '../../geo/geo-map-layer-background/geo-map-layer-background';
 import {GeoMapLayerGrid} from '../../geo/geo-map-layer-grid/geo-map-layer-grid';
 import {GeoMapLayerWorldNations} from '../../geo/geo-map-layer-world-nations/geo-map-layer-world-nations';
 import {GeoMapLayerWorldTerritories} from '../../geo/geo-map-layer-world-territories/geo-map-layer-world-territories';
@@ -22,6 +23,7 @@ import {GeoMap} from '../../geo/geo-map/geo-map';
     GeoMap,
     GeoMapLayerWorldNations,
     GeoMapLayerGrid,
+    GeoMapLayerBackground,
   ],
   templateUrl: './world-list-page.html',
   styleUrl: './world-list-page.scss'
@@ -31,6 +33,8 @@ export class WorldListPage implements OnDestroy {
 
   centerLongitude = 0;
 
+  readonly landCellTypes = [AtlasCellType.Continent, AtlasCellType.Island, AtlasCellType.Pole];
+
   private timer: number;
 
   constructor(
@@ -39,9 +43,8 @@ export class WorldListPage implements OnDestroy {
     this.worlds$ = worldService.gameGetWorlds().pipe(
       map(result => result.objects)
     );
-
     const interval = 10; // milliseconds
-    const speed = 20; // degrees per second
+    const speed = 15; // degrees per second
     this.timer = setInterval(() => {
       this.centerLongitude += speed * interval / 1000;
       if (this.centerLongitude > 180) {

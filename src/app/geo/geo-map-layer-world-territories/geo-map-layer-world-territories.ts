@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
-import {RegionType} from '../../../api';
+import {AtlasCellType, RegionType} from '../../../api';
 import {environment} from '../../../environments/environment';
 import {GeoAbstractTerrainLayer} from '../geo-abstract-terrain-layer';
 import {GeoLayer, MapSelectionEvent} from '../geo-map/geo-map';
@@ -25,6 +25,9 @@ export class GeoMapLayerWorldTerritories extends GeoAbstractTerrainLayer<Territo
   @Input()
   highlights: { [id: string]: string } = {};
 
+  @Input()
+  cellTypes: AtlasCellType[] = Object.values(AtlasCellType);
+
   @Output()
   selected = new EventEmitter<MapSelectionEvent<TerritoryProperties>>();
 
@@ -38,11 +41,15 @@ export class GeoMapLayerWorldTerritories extends GeoAbstractTerrainLayer<Territo
     this.selected.emit(event);
   }
 
-  protected override getHighlights(): { [id: string]: string; } {
-    return this.highlights;
-  }
-
   protected generateUrl(): string {
     return `${(environment.apiUrl)}/game/worlds/${this.worldId}/territory-tiles/{z}/{x}/{y}`;
+  }
+
+  protected override getActiveCellTypes(): AtlasCellType[] {
+    return this.cellTypes;
+  }
+
+  protected override getHighlights(): { [id: string]: string; } {
+    return this.highlights;
   }
 }

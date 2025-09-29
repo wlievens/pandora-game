@@ -8,7 +8,14 @@
       <pt-geo-map [projection]="'globe'" [center]="government.centroid || {lon: 0, lat: 0}" [fixed]="true"
                   class="map-container">
         <pt-geo-map-layer-background></pt-geo-map-layer-background>
-        <pt-geo-map-layer-world-nations [worldId]="world.id"></pt-geo-map-layer-world-nations>
+        <pt-geo-map-layer-world-territories
+          [cellTypes]="landCellTypes"
+          [worldId]="world.id"
+        ></pt-geo-map-layer-world-territories>
+        <pt-geo-map-layer-world-nations
+          [worldId]="world.id"
+          [highlights]="[government]"
+        ></pt-geo-map-layer-world-nations>
         <pt-geo-map-layer-grid></pt-geo-map-layer-grid>
       </pt-geo-map>
     </div>
@@ -18,7 +25,15 @@
     <pt-geo-map [fitBounds]="$any(government.bounds)" class="map-container">
       <pt-geo-map-layer-background></pt-geo-map-layer-background>
       <pt-geo-map-control-navigation></pt-geo-map-control-navigation>
-      <pt-geo-map-layer-world-nations [worldId]="world.id"></pt-geo-map-layer-world-nations>
+      <pt-geo-map-layer-world-territories
+        [cellTypes]="landCellTypes"
+        [worldId]="world.id"
+      ></pt-geo-map-layer-world-territories>
+      <pt-geo-map-layer-world-nations
+        [worldId]="world.id"
+        [highlights]="[government]"
+      ></pt-geo-map-layer-world-nations>
+      <pt-geo-map-layer-grid></pt-geo-map-layer-grid>
     </pt-geo-map>
   </div>
 }

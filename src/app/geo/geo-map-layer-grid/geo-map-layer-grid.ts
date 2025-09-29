@@ -79,7 +79,7 @@ export class GeoMapLayerGrid extends GeoLayer {
         source: id,
         paint: {
           'line-color': '#000000',
-          'line-opacity': 0.4,
+          'line-opacity': 0.2,
           'line-width': [
             'case',
             ['==', ['get', 'position'], 0], 2.0,
@@ -95,7 +95,7 @@ export class GeoMapLayerGrid extends GeoLayer {
           source: id,
           layout: {
             'text-field': ['get', 'label'],
-            'text-size': 16,
+            'text-size': 12,
             'text-anchor': 'top',
             'text-offset': [0, 0],
             'symbol-placement': 'line',
