@@ -23,6 +23,8 @@ body {
   --flag-sm-width: calc(var(--flag-sm-height) * 3 / 2);
   --flag-md-height: 56px; // same as a mat-form-field
   --flag-md-width: calc(var(--flag-md-height) * 3 / 2);
+  --flag-lg-height: calc(var(--flag-md-height) * 2);
+  --flag-lg-width: calc(var(--flag-lg-height) * 3 / 2);
 
   --portrait-sm-size: 48px;
 
@@ -66,6 +68,20 @@ img.flag-image-xs {
 img.flag-image-sm {
   width: var(--flag-sm-width);
   height: var(--flag-sm-height);
+  border: 1px solid var(--mat-sys-outline);
+  vertical-align: middle;
+}
+
+img.flag-image-md {
+  width: var(--flag-md-width);
+  height: var(--flag-md-height);
+  border: 1px solid var(--mat-sys-outline);
+  vertical-align: middle;
+}
+
+img.flag-image-lg {
+  width: var(--flag-lg-width);
+  height: var(--flag-lg-height);
   border: 1px solid var(--mat-sys-outline);
   vertical-align: middle;
 }

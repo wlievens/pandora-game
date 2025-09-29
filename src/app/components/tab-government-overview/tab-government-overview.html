@@ -1,1 +1,11 @@
-<p>tab-government-overview works!</p>
+@if (government) {
+  @let world = government.world;
+  <img class="flag-image-lg" [attr.src]="government | governmentFlagUrl: world">
+
+  <div style="height: 600px;">
+    <pt-geo-map [fitBounds]="$any(government.bounds)" class="map-container">
+      <pt-geo-map-control-navigation></pt-geo-map-control-navigation>
+      <pt-geo-map-layer-world-nations [worldId]="world.id"></pt-geo-map-layer-world-nations>
+    </pt-geo-map>
+  </div>
+}

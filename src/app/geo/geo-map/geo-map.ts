@@ -71,7 +71,13 @@ export class GeoMap implements AfterViewChecked, OnChanges {
   center: LonLat = {lon: 0, lat: 0};
 
   @Input()
+  fitBounds: [LonLat, LonLat] | undefined = undefined;
+
+  @Input()
   projection: 'globe' | 'mercator' = 'mercator';
+
+  map?: maplibregl.Map = undefined;
+  debug = false;
 
   @ViewChild('mapContainer')
   private mapContainer?: ElementRef;
@@ -82,11 +88,8 @@ export class GeoMap implements AfterViewChecked, OnChanges {
   @ContentChildren(GeoControl)
   private controlComponents!: QueryList<GeoControl>;
 
-  map?: maplibregl.Map = undefined;
-  debug = false;
-
   ngAfterViewChecked() {
-    const {mapContainer, map, layerComponents, controlComponents, projection, zoom, center} = this;
+    const {mapContainer, map, layerComponents, controlComponents, projection, zoom, center, fitBounds} = this;
 
     if (!mapContainer) {
       if (map) {
@@ -107,6 +110,8 @@ export class GeoMap implements AfterViewChecked, OnChanges {
         },
         center: [center.lon, center.lat],
         zoom,
+        bounds: fitBounds,
+        fitBoundsOptions: {padding: 40},
         minZoom: ZOOM_LIMITS.min,
         maxZoom: ZOOM_LIMITS.max,
         dragPan: !this.fixed,
@@ -160,6 +165,17 @@ export class GeoMap implements AfterViewChecked, OnChanges {
     if ('center' in changes) {
       if (map) {
         map.setCenter([this.center.lon, this.center.lat]);
+      }
+    }
+    if ('fitBounds' in changes) {
+      if (map) {
+        const fitBounds = this.fitBounds;
+        if (fitBounds) {
+          map.fitBounds(
+            [[fitBounds[0].lon, fitBounds[0].lat], [fitBounds[1].lon, fitBounds[1].lat]],
+            {padding: 100, maxZoom: ZOOM_LIMITS.max}
+          );
+        }
       }
     }
   }
