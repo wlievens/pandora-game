@@ -1,4 +1,11 @@
 @let party = party$?.object | async;
 @if (party) {
   <h1> {{ party.name }}</h1>
+
+  <img class="flag-image-md" [attr.src]="party.nation | governmentFlagUrl: party.world">
+  <a [routerLink]="['/worlds', party.world.id, 'governments', party.nation.id]">
+    {{ party.nation.title }}
+  </a>
+
+  <pt-compass [points]="[{label: '', color: party.color, x: party.compass[0], y: party.compass[1]}]"></pt-compass>
 }

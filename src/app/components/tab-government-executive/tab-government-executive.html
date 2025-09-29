@@ -48,8 +48,10 @@
                   @if (tenure) {
                     @let party = tenure.party;
                     @if (party) {
-                      <pt-color-box [color]="party.color"/>
-                      {{ party.name }}
+                      <a [routerLink]="['/worlds', government.world.id, 'parties', party.id]">
+                        <pt-color-box [color]="party.color"/>
+                        {{ party.name }}
+                      </a>
                     } @else {
                       <i>Vacant</i>
                     }
