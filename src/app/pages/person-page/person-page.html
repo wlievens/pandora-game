@@ -1,0 +1,5 @@
+@let person = person$?.object | async;
+@if (person) {
+  <h1> {{ person.firstName }} {{ person.lastName }}</h1>
+  <img [attr.src]="person | portraitUrl: person.world" class="portrait-image-lg">
+}
