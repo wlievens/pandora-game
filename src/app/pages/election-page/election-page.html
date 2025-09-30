@@ -97,7 +97,7 @@
   ></ng-container>
 
   @if (election.constituencies.length === 1) {
-    <h3>Territory Results</h3>
+    <h3>Results per Territory</h3>
     @let constituency = election.constituencies[0];
     <mat-accordion>
       @for (result of constituency.territories; track result) {

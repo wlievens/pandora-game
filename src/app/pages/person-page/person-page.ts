@@ -1,15 +1,25 @@
-import {AsyncPipe} from '@angular/common';
+import {AsyncPipe, JsonPipe, TitleCasePipe} from '@angular/common';
 import {Component} from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {ActivatedRoute, Params, RouterLink} from '@angular/router';
 import {GamePersonService, PersonGameFull} from '../../../api';
 import {LoadedObject} from '../../classes/loaded-object';
+import {ColorBox} from '../../components/color-box/color-box';
+import {GovernmentFlagUrlPipe} from '../../pipes/government-flag-url-pipe';
 import {PortraitUrlPipe} from '../../pipes/portrait-url-pipe';
+import {SymbolUrlPipe} from '../../pipes/symbol-url-pipe';
 
 @Component({
   selector: 'pt-person-page',
   imports: [
     AsyncPipe,
+    ColorBox,
+    GovernmentFlagUrlPipe,
     PortraitUrlPipe,
+    RouterLink,
+    SymbolUrlPipe,
+    TitleCasePipe,
+    MatTooltipModule,
   ],
   templateUrl: './person-page.html',
   styleUrl: './person-page.scss'

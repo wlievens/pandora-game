@@ -2,4 +2,65 @@
 @if (person) {
   <h1> {{ person.firstName }} {{ person.lastName }}</h1>
   <img [attr.src]="person | portraitUrl: person.world" class="portrait-image-lg">
+
+  <h3>Personalia</h3>
+  <table class="compact-table">
+    <tbody>
+    <tr>
+      <td class="border-right"><b>Nationality</b></td>
+      <td>
+        <a [routerLink]="['/worlds', person.world.id, 'governments', person.nation.id]">
+          <img [attr.src]="person.nation | governmentFlagUrl: person.world" class="flag-image-sm">
+          {{ person.nation.adjective }}
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td class="border-right"><b>Home Territory</b></td>
+      <td>
+        <a [routerLink]="['/worlds', person.world.id, 'territories', person.home.id]">
+          {{ person.home.name }}
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td class="border-right"><b>Party Affiliation</b></td>
+      <td>
+        @let party = person.party;
+        @if (party) {
+          <a [routerLink]="['/worlds', person.world.id, 'parties', party.id]">
+            <pt-color-box [color]="party.color"/>
+            {{ party.name }}
+          </a>
+        }
+      </td>
+    </tr>
+    <tr>
+      <td class="border-right"><b>Date of Birth</b></td>
+      <td>
+        {{ person.birthTick.formatted }}
+      </td>
+    </tr>
+    <tr>
+      <td class="border-right"><b>Gender</b></td>
+      <td>
+        {{ person.gender | titlecase }}
+      </td>
+    </tr>
+    <tr>
+      <td class="border-right"><b>Age</b></td>
+      <td>
+        {{ person.age }} years
+      </td>
+    </tr>
+    <tr>
+      <td class="border-right"><b>Facets</b></td>
+      <td>
+        @for (facet of person.facets; track facet) {
+          <img [attr.src]="facet.symbol | symbolUrl" class="symbol-sm" [matTooltip]="facet.name">
+        }
+      </td>
+    </tr>
+    </tbody>
+  </table>
 }

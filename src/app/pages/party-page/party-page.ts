@@ -1,9 +1,11 @@
 import {AsyncPipe} from '@angular/common';
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, RouterLink} from '@angular/router';
-import {GamePartyService, PartyGameFull} from '../../../api';
+import {map, Observable, of} from 'rxjs';
+import {GamePartyService, GameSpectrumService, PartyGameFull, SpectrumGameSummary} from '../../../api';
 import {LoadedObject} from '../../classes/loaded-object';
 import {Compass} from '../../components/compass/compass';
+import {IdeologyRatings} from '../../components/ideology-ratings/ideology-ratings';
 import {GovernmentFlagUrlPipe} from '../../pipes/government-flag-url-pipe';
 
 @Component({
@@ -13,6 +15,7 @@ import {GovernmentFlagUrlPipe} from '../../pipes/government-flag-url-pipe';
     Compass,
     GovernmentFlagUrlPipe,
     RouterLink,
+    IdeologyRatings,
   ],
   templateUrl: './party-page.html',
   styleUrl: './party-page.scss'
@@ -20,14 +23,19 @@ import {GovernmentFlagUrlPipe} from '../../pipes/government-flag-url-pipe';
 export class PartyPage implements OnInit {
   worldId?: string;
   party$?: LoadedObject<PartyGameFull>;
+  spectra$: Observable<SpectrumGameSummary[]> = of([]);
 
   constructor(
     private route: ActivatedRoute,
     private partyService: GamePartyService,
+    private spectrumService: GameSpectrumService,
   ) {
   }
 
   ngOnInit() {
+    this.spectra$ = this.spectrumService.gameGetSpectra().pipe(
+      map(result => result.objects)
+    );
     this.route.params.subscribe((params: Params) => {
       const worldId = params['worldId'];
       const partyId = params['partyId'];

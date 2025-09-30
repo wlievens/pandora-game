@@ -31,6 +31,8 @@ body {
   --portrait-md-size: calc(var(--portrait-sm-size) * 2);
   --portrait-lg-size: calc(var(--portrait-md-size) * 2);
 
+  --symbol-sm-size: 48px;
+
   color-scheme: light;
 
   // Set a default background, font and text colors for the application using
@@ -111,6 +113,12 @@ img.portrait-image-md {
 img.portrait-image-lg {
   width: var(--portrait-lg-size);
   height: var(--portrait-lg-size);
+}
+
+img.symbol-sm {
+  width: var(--symbol-sm-size);
+  height: var(--symbol-sm-size);
+  vertical-align: middle;
 }
 
 mat-toolbar {
