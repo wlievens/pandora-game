@@ -11,7 +11,7 @@
       @if (election) {
         <p>
           Election:
-          <a [routerLink]="['/worlds', government.world.id, 'elections', election.id]">{{ election.tick }} TODO</a>
+          <a [routerLink]="['/worlds', government.world.id, 'elections', election.id]">{{ election.name }}</a>
         </p>
       }
       <table class="compact-table">

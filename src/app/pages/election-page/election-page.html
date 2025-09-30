@@ -1,0 +1,53 @@
+@let election = election$?.object | async;
+
+@if (election) {
+  <h1> {{ election.title }}</h1>
+
+  @if (election.story) {
+    <p>
+      <b>Coverage: </b>
+      <a [routerLink]="['/worlds', worldId, 'stories', election.story.id]">{{ election.story.title }}</a>
+    </p>
+  }
+
+  <table class="compact-table">
+    <thead>
+    <tr>
+      <th class="text-left" colspan="2">Party</th>
+      <th class="text-center" colspan="2">Votes</th>
+      <th class="text-center" colspan="2">Seats</th>
+    </tr>
+    </thead>
+    <tbody>
+      @for (result of election.partyResults; track result.party.id) {
+        <tr>
+          <td>
+            <pt-color-box [color]="result.party.color"/>
+          </td>
+          <td>{{ result.party.name }}</td>
+          <td class="text-right">{{ result.votes | number: '1.0-0' }}</td>
+          <td class="text-right">{{ (result.votes / election.totalVotes) | percent: '1.1-1' }}</td>
+          <td class="text-right">{{ result.seats | number: '1.0-0' }}</td>
+          <td class="text-right">{{ (result.seats / election.totalSeats) | percent: '1.1-1' }}</td>
+        </tr>
+      }
+    <tr>
+      <td colspan="1"></td>
+      <td colspan="1"><i>Invalid Votes</i></td>
+      <td class="text-right">{{ election.invalidVotes | number: '1.0-0' }}</td>
+      <td class="text-right">{{ (election.invalidVotes / election.totalVotes) | percent: '1.1-1' }}</td>
+      <td colspan="1"></td>
+      <td colspan="1"></td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr class="border-top">
+      <td colspan="2"><b>Total</b></td>
+      <td class="text-right">{{ election.totalVotes | number: '1.0-0' }}</td>
+      <td class="text-right">100.0%</td>
+      <td class="text-right">{{ election.totalSeats | number: '1.0-0' }}</td>
+      <td class="text-right">100.0%</td>
+    </tr>
+    </tfoot>
+  </table>
+}

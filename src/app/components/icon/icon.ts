@@ -5,12 +5,12 @@ export const ICON_TABLE = {
   '': 'warning',
   'map': 'language',
   'world': 'public',
-  'bill': '',
-  'body': '',
-  'election': '',
-  'party': '',
-  'person': '',
-  'territory': '',
+  'bill': 'auto_stories',
+  'body': 'account_balance',
+  'election': 'how_to_vote',
+  'party': 'stars',
+  'person': 'person',
+  'territory': 'map',
 };
 
 export type IconKey = keyof typeof ICON_TABLE;
