@@ -36,6 +36,10 @@ export const routes: Routes = [
         component: NewspaperPage
       },
       {
+        path: 'stories/:storyId',
+        component: StoryPage
+      },
+      {
         path: 'bills/:billId',
         component: BillPage
       },

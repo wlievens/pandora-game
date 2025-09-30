@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {AdminGovernmentService, GovernmentBase, WorldBase} from '../../api';
+import {AdminGovernmentService, GovernmentBase} from '../../api';
 
 @Pipe({
   name: 'governmentFlagUrl'
@@ -13,7 +13,7 @@ export class GovernmentFlagUrlPipe implements PipeTransform {
     this.apiRoot = governmentService.configuration.basePath!;
   }
 
-  transform(government: GovernmentBase, world: WorldBase): string {
+  transform(government: GovernmentBase, world: { id: string }): string {
     return `${this.apiRoot}/game/worlds/${world.id}/governments/${government.id}/flag`;
   }
 }
