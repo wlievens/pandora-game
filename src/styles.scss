@@ -204,10 +204,6 @@ mat-card-header {
   }
 }
 
-th.mat-mdc-header-cell {
-  user-select: none;
-}
-
-.mat-mdc-tab-label-container {
+th.mat-mdc-header-cell, .mat-mdc-tab-label-container, .mat-expansion-panel-header-title {
   user-select: none;
 }

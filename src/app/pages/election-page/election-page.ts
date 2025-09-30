@@ -1,18 +1,23 @@
-import {AsyncPipe, DecimalPipe, PercentPipe} from '@angular/common';
+import {AsyncPipe, CommonModule, DecimalPipe, PercentPipe} from '@angular/common';
 import {Component, OnInit} from '@angular/core';
+import {MatExpansionModule} from '@angular/material/expansion';
 import {ActivatedRoute, Params, RouterLink} from '@angular/router';
-import {ElectionGameFull, GameElectionService} from '../../../api';
+import {BodyType, ElectionGameFull, GameElectionService} from '../../../api';
 import {LoadedObject} from '../../classes/loaded-object';
 import {ColorBox} from '../../components/color-box/color-box';
+import {PortraitUrlPipe} from '../../pipes/portrait-url-pipe';
 
 @Component({
   selector: 'pt-election-page',
   imports: [
     AsyncPipe,
     ColorBox,
+    CommonModule,
     DecimalPipe,
+    MatExpansionModule,
     PercentPipe,
     RouterLink,
+    PortraitUrlPipe,
   ],
   templateUrl: './election-page.html',
   styleUrl: './election-page.scss'
@@ -20,6 +25,8 @@ import {ColorBox} from '../../components/color-box/color-box';
 export class ElectionPage implements OnInit {
   worldId?: string;
   election$?: LoadedObject<ElectionGameFull>;
+
+  readonly BodyType = BodyType;
 
   constructor(
     private route: ActivatedRoute,

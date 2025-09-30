@@ -1,13 +1,32 @@
 :host {
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
   display: inline-block;
   vertical-align: middle;
 }
 
 .color-box {
-  width: 14px;
-  height: 14px;
+  position: relative;
+  width: 18px;
+  height: 18px;
   display: inline-block;
   border-radius: 4px;
+  box-sizing: border-box;
+  border: 1px solid var(--mat-sys-outline);
+}
+
+.color-box.invalid {
+  background-color: white;
+  border-style: solid;
+}
+
+.color-box.invalid:after {
+  content: "";
+  border-top: 1px solid red;
+  width: calc(11px * sqrt(2));
+  position: absolute;
+  left: 3px;
+  top: 2px;
+  transform: rotate(45deg);
+  transform-origin: top left;
 }

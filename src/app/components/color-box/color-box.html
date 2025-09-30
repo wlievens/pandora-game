@@ -1,1 +1,5 @@
-<div class="color-box" [style.background-color]="color"></div>
+@if (color === 'invalid') {
+  <div class="color-box invalid"></div>
+} @else {
+  <div class="color-box" [style.background-color]="color"></div>
+}
