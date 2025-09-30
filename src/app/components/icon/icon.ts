@@ -3,14 +3,15 @@ import {MatIconModule} from '@angular/material/icon';
 
 export const ICON_TABLE = {
   '': 'warning',
-  'map': 'language',
-  'world': 'public',
   'bill': 'auto_stories',
   'body': 'account_balance',
   'election': 'how_to_vote',
+  'map': 'language',
+  'office': 'assignment_ind',
   'party': 'stars',
   'person': 'person',
   'territory': 'map',
+  'world': 'public',
 };
 
 export type IconKey = keyof typeof ICON_TABLE;
