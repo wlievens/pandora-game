@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {GamePersonService, PersonBase, WorldBase} from '../../api';
+import {GamePersonService, PersonBase} from '../../api';
 
 @Pipe({
   name: 'portraitUrl'
@@ -10,7 +10,11 @@ export class PortraitUrlPipe implements PipeTransform {
   ) {
   }
 
-  transform(person: PersonBase, world: WorldBase): unknown {
-    return `${this.personService.configuration.basePath}/game/worlds/${world.id}/persons/${person.id}/portrait`;
+  transform(person: PersonBase, world: { id: string }, tick: number | undefined = undefined): unknown {
+    const url = `${this.personService.configuration.basePath}/game/worlds/${world.id}/persons/${person.id}/portrait`;
+    if (tick === undefined) {
+      return url;
+    }
+    return `${url}?tick=${tick}`;
   }
 }

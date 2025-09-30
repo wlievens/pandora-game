@@ -8,17 +8,19 @@ import {LoadedObject} from '../../classes/loaded-object';
 import {Icon} from '../../components/icon/icon';
 import {DecorateTextPipe} from '../../pipes/decorate-text-pipe';
 import {GovernmentFlagUrlPipe} from '../../pipes/government-flag-url-pipe';
+import {PortraitUrlPipe} from '../../pipes/portrait-url-pipe';
 
 @Component({
   selector: 'pt-story-page',
   imports: [
     AsyncPipe,
     DecorateTextPipe,
+    GovernmentFlagUrlPipe,
+    Icon,
     MatDividerModule,
     MatListModule,
+    PortraitUrlPipe,
     RouterLink,
-    Icon,
-    GovernmentFlagUrlPipe,
   ],
   templateUrl: './story-page.html',
   styleUrl: './story-page.scss'

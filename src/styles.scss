@@ -26,6 +26,7 @@ body {
   --flag-lg-height: calc(var(--flag-md-height) * 2);
   --flag-lg-width: calc(var(--flag-lg-height) * 3 / 2);
 
+  --portrait-xs-size: 24px;
   --portrait-sm-size: 48px;
   --portrait-md-size: calc(var(--portrait-sm-size) * 2);
   --portrait-lg-size: calc(var(--portrait-md-size) * 2);
@@ -86,6 +87,17 @@ img.flag-image-lg {
   height: var(--flag-lg-height);
 }
 
+img.portrait-image-xs, img.portrait-image-sm, img.portrait-image-md, img.portrait-image-lg {
+  box-sizing: border-box;
+  border: 1px solid var(--mat-sys-outline);
+  vertical-align: middle;
+}
+
+img.portrait-image-xs {
+  width: var(--portrait-xs-size);
+  height: var(--portrait-xs-size);
+}
+
 img.portrait-image-sm {
   width: var(--portrait-sm-size);
   height: var(--portrait-sm-size);
@@ -94,15 +106,11 @@ img.portrait-image-sm {
 img.portrait-image-md {
   width: var(--portrait-md-size);
   height: var(--portrait-md-size);
-  border: 1px solid var(--mat-sys-outline);
-  vertical-align: middle;
 }
 
 img.portrait-image-lg {
   width: var(--portrait-lg-size);
   height: var(--portrait-lg-size);
-  border: 1px solid var(--mat-sys-outline);
-  vertical-align: middle;
 }
 
 mat-toolbar {

@@ -17,7 +17,7 @@
         @if (story.body) {<mat-list-item><a [routerLink]="['/worlds', worldId, 'bodys', story.body.id]"><pt-icon name="body" /> {{story.body.title}}</a></mat-list-item>}
         @if (story.office) {<mat-list-item><a [routerLink]="['/worlds', worldId, 'offices', story.office.id]"><pt-icon name="office" /> {{story.office.title}}</a></mat-list-item>}
         @if (story.party) {<mat-list-item><a [routerLink]="['/worlds', worldId, 'parties', story.party.id]"><pt-icon name="party" /> {{story.party.name}}</a></mat-list-item>}
-        @if (story.person) {<mat-list-item><a [routerLink]="['/worlds', worldId, 'persons', story.person.id]"><pt-icon name="person" /> {{story.person.fullName}}</a></mat-list-item>}
+        @if (story.person) {<mat-list-item><a [routerLink]="['/worlds', worldId, 'persons', story.person.id]"><img [attr.src]="story.person | portraitUrl: {id: worldId}: story.tick.value" class="portrait-image-xs" /> {{story.person.fullName}}</a></mat-list-item>}
         @if (story.territory) {<mat-list-item><a [routerLink]="['/worlds', worldId, 'territories', story.territory.id]"><pt-icon name="territory" /> {{story.territory.name}}</a></mat-list-item>}
       </mat-list>
     </div>
