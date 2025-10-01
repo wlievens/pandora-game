@@ -63,4 +63,39 @@
     </tr>
     </tbody>
   </table>
+
+  <h3>Political Career</h3>
+  <table class="compact-table">
+    <thead>
+    <tr>
+      <th>Position</th>
+      <th>Start</th>
+      <th>End</th>
+    </tr>
+    </thead>
+    <tbody>
+      @for (entry of person.career; track entry) {
+        <tr>
+          <td>
+            @let party = entry.party;
+            @let office = entry.office;
+            @if (party) {
+              Member of
+              <a [routerLink]="['/worlds', person.world.id, 'parties', party.id]">
+                <pt-color-box [color]="party.color"/>
+                {{ party.name }}
+              </a>
+            }
+            @if (office) {
+              <a [routerLink]="['/worlds', person.world.id, 'offices', office.id]">
+                {{ office.title }}
+              </a>
+            }
+          </td>
+          <td>{{ entry.startTick.formatted }}</td>
+          <td>{{ entry.endTick?.formatted || '...' }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
 }
