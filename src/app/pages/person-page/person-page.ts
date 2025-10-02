@@ -5,6 +5,7 @@ import {ActivatedRoute, Params, RouterLink} from '@angular/router';
 import {GamePersonService, PersonGameFull} from '../../../api';
 import {LoadedObject} from '../../classes/loaded-object';
 import {ColorBox} from '../../components/color-box/color-box';
+import {Portrait} from '../../components/portrait/portrait';
 import {GovernmentFlagUrlPipe} from '../../pipes/government-flag-url-pipe';
 import {PortraitUrlPipe} from '../../pipes/portrait-url-pipe';
 import {SymbolUrlPipe} from '../../pipes/symbol-url-pipe';
@@ -20,6 +21,7 @@ import {SymbolUrlPipe} from '../../pipes/symbol-url-pipe';
     SymbolUrlPipe,
     TitleCasePipe,
     MatTooltipModule,
+    Portrait,
   ],
   templateUrl: './person-page.html',
   styleUrl: './person-page.scss'

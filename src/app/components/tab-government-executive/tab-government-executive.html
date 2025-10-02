@@ -25,7 +25,11 @@
                   @if (tenure) {
                     @let person = tenure.person;
                     @if (person) {
-                      <img class="portrait-image-sm" [attr.src]="person | portraitUrl: government.world">
+                      <pt-portrait
+                        size="sm"
+                        [person]="person"
+                        [party]="tenure.party"
+                        [world]="government.world"/>
                     }
                   }
                 }

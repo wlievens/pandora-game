@@ -1,7 +1,7 @@
 @let person = person$?.object | async;
 @if (person) {
   <h1> {{ person.firstName }} {{ person.lastName }}</h1>
-  <img [attr.src]="person | portraitUrl: person.world" class="portrait-image-lg">
+  <pt-portrait [person]="person" [world]="person.world" [party]="person.party" size="lg"/>
 
   <h3>Personalia</h3>
   <table class="compact-table">

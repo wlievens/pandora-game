@@ -6,6 +6,7 @@ import {BodyGameFull, BodyType, GameBodyService, GovernmentGameFull} from '../..
 import {FindTenurePipe} from '../../pipes/find-tenure-pipe';
 import {PortraitUrlPipe} from '../../pipes/portrait-url-pipe';
 import {ColorBox} from '../color-box/color-box';
+import {Portrait} from '../portrait/portrait';
 
 @Component({
   selector: 'pt-tab-government-executive',
@@ -15,6 +16,7 @@ import {ColorBox} from '../color-box/color-box';
     ColorBox,
     PortraitUrlPipe,
     RouterLink,
+    Portrait,
   ],
   templateUrl: './tab-government-executive.html',
   styleUrl: './tab-government-executive.scss'
