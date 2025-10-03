@@ -5,7 +5,7 @@ import {ActivatedRoute, Params, RouterLink} from '@angular/router';
 import {BodyType, ElectionGameFull, GameElectionService} from '../../../api';
 import {LoadedObject} from '../../classes/loaded-object';
 import {ColorBox} from '../../components/color-box/color-box';
-import {PortraitUrlPipe} from '../../pipes/portrait-url-pipe';
+import {Portrait} from '../../components/portrait/portrait';
 
 @Component({
   selector: 'pt-election-page',
@@ -16,8 +16,8 @@ import {PortraitUrlPipe} from '../../pipes/portrait-url-pipe';
     DecimalPipe,
     MatExpansionModule,
     PercentPipe,
+    Portrait,
     RouterLink,
-    PortraitUrlPipe,
   ],
   templateUrl: './election-page.html',
   styleUrl: './election-page.scss'

@@ -24,4 +24,7 @@ export class Portrait {
 
   @Input()
   world?: WorldBase;
+
+  @Input()
+  tick?: number;
 }

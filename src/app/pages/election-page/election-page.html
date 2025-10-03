@@ -1,6 +1,6 @@
 @let election = election$?.object | async;
 @if (worldId && election) {
-  <ng-template #resultTable let-data="data" let-hasSeats="hasSeats" let-hasCandidates="hasCandidates">
+  <ng-template #resultTable let-data="data" let-hasCandidates="hasCandidates" let-hasSeats="hasSeats">
     <table class="compact-table">
       <thead>
       <tr>
@@ -30,8 +30,12 @@
                 @if (result.candidates && result.candidates.length > 0) {
                   @let candidate = result.candidates[0];
                   <a [routerLink]="['/worlds', worldId, 'persons', candidate.id]">
-                    <img class="portrait-image-xs"
-                         [attr.src]="candidate | portraitUrl: {id: worldId}: election.tick.value">
+                    <pt-portrait
+                      [party]="result.party"
+                      [person]="candidate"
+                      [tick]="election.tick.value"
+                      [world]="{id: worldId, name: ''}"
+                      size="sm"/>
                     {{ candidate.fullName }}
                   </a>
                 }
@@ -92,8 +96,8 @@
 
   <h3>Total Results</h3>
   <ng-container
-    [ngTemplateOutlet]="resultTable"
     [ngTemplateOutletContext]="{data: election, hasSeats, hasCandidates}"
+    [ngTemplateOutlet]="resultTable"
   ></ng-container>
 
   @if (election.constituencies.length === 1) {
@@ -108,8 +112,8 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <ng-container
-            [ngTemplateOutlet]="resultTable"
             [ngTemplateOutletContext]="{data: result, hasSeats, hasCandidates: false}"
+            [ngTemplateOutlet]="resultTable"
           ></ng-container>
         </mat-expansion-panel>
       }

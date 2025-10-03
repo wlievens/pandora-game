@@ -6,6 +6,7 @@ import {ActivatedRoute, Params, RouterLink} from '@angular/router';
 import {GameStoryService, StoryGameFull} from '../../../api';
 import {LoadedObject} from '../../classes/loaded-object';
 import {Icon} from '../../components/icon/icon';
+import {Portrait} from '../../components/portrait/portrait';
 import {DecorateTextPipe} from '../../pipes/decorate-text-pipe';
 import {GovernmentFlagUrlPipe} from '../../pipes/government-flag-url-pipe';
 import {PortraitUrlPipe} from '../../pipes/portrait-url-pipe';
@@ -19,7 +20,7 @@ import {PortraitUrlPipe} from '../../pipes/portrait-url-pipe';
     Icon,
     MatDividerModule,
     MatListModule,
-    PortraitUrlPipe,
+    Portrait,
     RouterLink,
   ],
   templateUrl: './story-page.html',
