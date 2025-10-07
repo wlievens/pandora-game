@@ -3,7 +3,7 @@
   <h1> {{ party.name }}</h1>
 
   <div>
-    <img class="flag-image-md" [attr.src]="party.nation | governmentFlagUrl: party.world">
+    <img [attr.src]="party.nation | governmentFlagUrl: party.world" class="flag-image-md">
     <a [routerLink]="['/worlds', party.world.id, 'governments', party.nation.id]">
       {{ party.nation.title }}
     </a>
@@ -17,9 +17,11 @@
     <h2>Politicians</h2>
     <div class="flex-horizontal-centered">
       @for (politician of party.politicians; track politician.id) {
-        <div class="flex-vertical-centered" style="gap: 0;">
-          <label>{{politician.fullName}}</label>
-          <pt-portrait [person]="politician" [world]="party.world" [party]="party" size="md"/>
+        <div [routerLink]="['/worlds', party.world.id, 'persons', politician.id]"
+             class="flex-vertical-centered clickable"
+             style="gap: 0;">
+          <label>{{ politician.fullName }}</label>
+          <pt-portrait [party]="party" [person]="politician" [world]="party.world" size="md"/>
         </div>
       }
     </div>
