@@ -6,6 +6,7 @@ import {GamePartyService, GameSpectrumService, PartyGameFull, SpectrumGameSummar
 import {LoadedObject} from '../../classes/loaded-object';
 import {Compass} from '../../components/compass/compass';
 import {IdeologyRatings} from '../../components/ideology-ratings/ideology-ratings';
+import {Portrait} from '../../components/portrait/portrait';
 import {GovernmentFlagUrlPipe} from '../../pipes/government-flag-url-pipe';
 
 @Component({
@@ -14,8 +15,9 @@ import {GovernmentFlagUrlPipe} from '../../pipes/government-flag-url-pipe';
     AsyncPipe,
     Compass,
     GovernmentFlagUrlPipe,
-    RouterLink,
     IdeologyRatings,
+    RouterLink,
+    Portrait,
   ],
   templateUrl: './party-page.html',
   styleUrl: './party-page.scss'

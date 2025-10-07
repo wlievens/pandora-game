@@ -206,6 +206,13 @@ a {
   justify-content: center;
 }
 
+.flex-vertical-centered {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
 mat-card-header {
   mat-card-title {
     text-align: center;

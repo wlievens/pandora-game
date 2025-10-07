@@ -12,4 +12,16 @@
   <pt-compass [points]="[{label: '', color: party.color, x: party.compass[0], y: party.compass[1]}]"></pt-compass>
 
   <pt-ideology-ratings [ratings]="party.ideology.ratings"></pt-ideology-ratings>
+
+  @if (party.politicians.length > 0) {
+    <h2>Politicians</h2>
+    <div class="flex-horizontal-centered">
+      @for (politician of party.politicians; track politician.id) {
+        <div class="flex-vertical-centered" style="gap: 0;">
+          <label>{{politician.fullName}}</label>
+          <pt-portrait [person]="politician" [world]="party.world" [party]="party" size="md"/>
+        </div>
+      }
+    </div>
+  }
 }
