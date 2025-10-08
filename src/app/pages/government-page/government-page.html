@@ -1,63 +1,65 @@
-@let government = government$?.object | async;
-@if (government) {
-  <h1>
-    <img [attr.src]="government | governmentFlagUrl: government.world" class="flag-image-xs">
-    {{ government.title }}
-    <img [attr.src]="government | governmentFlagUrl: government.world" class="flag-image-xs">
-  </h1>
-  <mat-tab-group>
-    <mat-tab>
-      <ng-template mat-tab-label>
-        Overview
-      </ng-template>
+<div class="page-content">
+  @let government = government$?.object | async;
+  @if (government) {
+    <h1>
+      <img [attr.src]="government | governmentFlagUrl: government.world" class="flag-image-xs">
+      {{ government.title }}
+      <img [attr.src]="government | governmentFlagUrl: government.world" class="flag-image-xs">
+    </h1>
+    <mat-tab-group>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          Overview
+        </ng-template>
 
-      <pt-tab-government-overview [government]="government"></pt-tab-government-overview>
-    </mat-tab>
+        <pt-tab-government-overview [government]="government"></pt-tab-government-overview>
+      </mat-tab>
 
-    <mat-tab>
-      <ng-template mat-tab-label>
-        Executive
-      </ng-template>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          Executive
+        </ng-template>
 
-      <ng-template matTabContent>
-        <pt-tab-government-executive [government]="government"></pt-tab-government-executive>
-      </ng-template>
-    </mat-tab>
+        <ng-template matTabContent>
+          <pt-tab-government-executive [government]="government"></pt-tab-government-executive>
+        </ng-template>
+      </mat-tab>
 
-    <mat-tab>
-      <ng-template mat-tab-label>
-        Legislature
-      </ng-template>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          Legislature
+        </ng-template>
 
-      <ng-template matTabContent>
-        <pt-tab-government-legislature [government]="government"></pt-tab-government-legislature>
-      </ng-template>
-    </mat-tab>
+        <ng-template matTabContent>
+          <pt-tab-government-legislature [government]="government"></pt-tab-government-legislature>
+        </ng-template>
+      </mat-tab>
 
-    <mat-tab>
-      <ng-template mat-tab-label>
-        Parties
-      </ng-template>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          Parties
+        </ng-template>
 
-      <ng-template matTabContent>
-        <pt-tab-government-parties [government]="government"></pt-tab-government-parties>
-      </ng-template>
-    </mat-tab>
+        <ng-template matTabContent>
+          <pt-tab-government-parties [government]="government"></pt-tab-government-parties>
+        </ng-template>
+      </mat-tab>
 
-    <mat-tab>
-      <ng-template mat-tab-label>
-        Territories
-      </ng-template>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          Territories
+        </ng-template>
 
-      <pt-tab-government-territories [government]="government"></pt-tab-government-territories>
-    </mat-tab>
+        <pt-tab-government-territories [government]="government"></pt-tab-government-territories>
+      </mat-tab>
 
-    <mat-tab>
-      <ng-template mat-tab-label>
-        Economy
-      </ng-template>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          Economy
+        </ng-template>
 
-      <pt-tab-government-economy [government]="government"></pt-tab-government-economy>
-    </mat-tab>
-  </mat-tab-group>
-}
+        <pt-tab-government-economy [government]="government"></pt-tab-government-economy>
+      </mat-tab>
+    </mat-tab-group>
+  }
+</div>

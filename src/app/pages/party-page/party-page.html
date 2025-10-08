@@ -1,29 +1,31 @@
-@let party = party$?.object | async;
-@if (party) {
-  <h1> {{ party.name }}</h1>
+<div class="page-content">
+  @let party = party$?.object | async;
+  @if (party) {
+    <h1> {{ party.name }}</h1>
 
-  <div>
-    <img [attr.src]="party.nation | governmentFlagUrl: party.world" class="flag-image-md">
-    <a [routerLink]="['/worlds', party.world.id, 'governments', party.nation.id]">
-      {{ party.nation.title }}
-    </a>
-  </div>
-
-  <pt-compass [points]="[{label: '', color: party.color, x: party.compass[0], y: party.compass[1]}]"></pt-compass>
-
-  <pt-ideology-ratings [ratings]="party.ideology.ratings"></pt-ideology-ratings>
-
-  @if (party.politicians.length > 0) {
-    <h2>Politicians</h2>
-    <div class="flex-horizontal-centered">
-      @for (politician of party.politicians; track politician.id) {
-        <div [routerLink]="['/worlds', party.world.id, 'persons', politician.id]"
-             class="flex-vertical-centered clickable"
-             style="gap: 0;">
-          <label>{{ politician.fullName }}</label>
-          <pt-portrait [party]="party" [person]="politician" [world]="party.world" size="md"/>
-        </div>
-      }
+    <div>
+      <img [attr.src]="party.nation | governmentFlagUrl: party.world" class="flag-image-md">
+      <a [routerLink]="['/worlds', party.world.id, 'governments', party.nation.id]">
+        {{ party.nation.title }}
+      </a>
     </div>
+
+    <pt-compass [points]="[{label: '', color: party.color, x: party.compass[0], y: party.compass[1]}]"></pt-compass>
+
+    <pt-ideology-ratings [ratings]="party.ideology.ratings"></pt-ideology-ratings>
+
+    @if (party.politicians.length > 0) {
+      <h2>Politicians</h2>
+      <div class="flex-horizontal-centered">
+        @for (politician of party.politicians; track politician.id) {
+          <div [routerLink]="['/worlds', party.world.id, 'persons', politician.id]"
+               class="flex-vertical-centered clickable"
+               style="gap: 0;">
+            <label>{{ politician.fullName }}</label>
+            <pt-portrait [party]="party" [person]="politician" [world]="party.world" size="md"/>
+          </div>
+        }
+      </div>
+    }
   }
-}
+</div>

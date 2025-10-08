@@ -1,17 +1,19 @@
-@let world = world$?.object | async;
-@if (world) {
-  <h1>{{ world.name }}</h1>
+<div class="page-content">
+  @let world = world$?.object | async;
+  @if (world) {
+    <h1>{{ world.name }}</h1>
 
-  <div style="width: 100%; height: 900px;">
-    <pt-geo-map>
-      <pt-geo-map-control-navigation></pt-geo-map-control-navigation>
-      <pt-geo-map-control-scale></pt-geo-map-control-scale>
-      <pt-geo-map-control-globe></pt-geo-map-control-globe>
-      <pt-geo-map-layer-world-nations
-        (selected)="onClickFeature(world, $event)"
-        [worldId]="world.id"
-      ></pt-geo-map-layer-world-nations>
-      <pt-geo-map-layer-grid></pt-geo-map-layer-grid>
-    </pt-geo-map>
-  </div>
-}
+    <div class="flex-expand" style="width: 100%; height: 100%;">
+      <pt-geo-map>
+        <pt-geo-map-control-navigation></pt-geo-map-control-navigation>
+        <pt-geo-map-control-scale></pt-geo-map-control-scale>
+        <pt-geo-map-control-globe></pt-geo-map-control-globe>
+        <pt-geo-map-layer-world-nations
+          (selected)="onClickFeature(world, $event)"
+          [worldId]="world.id"
+        ></pt-geo-map-layer-world-nations>
+        <pt-geo-map-layer-grid></pt-geo-map-layer-grid>
+      </pt-geo-map>
+    </div>
+  }
+</div>

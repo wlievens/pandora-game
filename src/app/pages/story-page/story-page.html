@@ -1,57 +1,63 @@
-@let story = story$?.object | async;
+<div class="page-content">
+  @let story = story$?.object | async;
 
-@if (story && worldId) {
-  <h1>{{ story.tick.formatted }} &mdash; {{ story.title }}</h1>
-  <div style="display: flex; flex-direction: row; gap: 10px;">
-    <div style="display: flex; flex-direction: column; gap: 10px;">
-      <div [innerHTML]="story.summary | decorateText"></div>
-      <mat-divider></mat-divider>
-      <div [innerHTML]="story.content | decorateText"></div>
+  @if (story && worldId) {
+    <h1>{{ story.tick.formatted }} &mdash; {{ story.title }}</h1>
+    <div style="display: flex; flex-direction: row; gap: 10px;">
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div [innerHTML]="story.summary | decorateText"></div>
+        <mat-divider></mat-divider>
+        <div [innerHTML]="story.content | decorateText"></div>
+      </div>
+      <div>
+        <h2>Relevant Links</h2>
+        <mat-list>
+          @if (story.election) {
+            <mat-list-item><a [routerLink]="['/worlds', worldId, 'elections', story.election.id]">
+              <pt-icon name="election"/>
+              {{ story.election.name }}</a></mat-list-item>
+          }
+          @if (story.government) {
+            <mat-list-item><a [routerLink]="['/worlds', worldId, 'governments', story.government.id]"><img
+              [attr.src]="story.government | governmentFlagUrl: {id: worldId}"
+              class="flag-image-xs"> {{ story.government.title }}</a></mat-list-item>
+          }
+          @if (story.bill) {
+            <mat-list-item><a [routerLink]="['/worlds', worldId, 'bills', story.bill.id]">
+              <pt-icon name="bill"/>
+              {{ story.bill.title }}</a></mat-list-item>
+          }
+          @if (story.body) {
+            <mat-list-item><a [routerLink]="['/worlds', worldId, 'bodys', story.body.id]">
+              <pt-icon name="body"/>
+              {{ story.body.title }}</a></mat-list-item>
+          }
+          @if (story.office) {
+            <mat-list-item><a [routerLink]="['/worlds', worldId, 'offices', story.office.id]">
+              <pt-icon name="office"/>
+              {{ story.office.title }}</a></mat-list-item>
+          }
+          @if (story.party) {
+            <mat-list-item><a [routerLink]="['/worlds', worldId, 'parties', story.party.id]">
+              <pt-icon name="party"/>
+              {{ story.party.name }}</a></mat-list-item>
+          }
+          @if (story.person) {
+            <mat-list-item><a [routerLink]="['/worlds', worldId, 'persons', story.person.id]">
+              <pt-portrait
+                [person]="story.person"
+                [tick]="story.tick.value"
+                [world]="{id: worldId, name: ''}"
+                size="xs"/>
+              {{ story.person.fullName }}</a></mat-list-item>
+          }
+          @if (story.territory) {
+            <mat-list-item><a [routerLink]="['/worlds', worldId, 'territories', story.territory.id]">
+              <pt-icon name="territory"/>
+              {{ story.territory.name }}</a></mat-list-item>
+          }
+        </mat-list>
+      </div>
     </div>
-    <div>
-      <h2>Relevant Links</h2>
-      <mat-list>
-        @if (story.election) {
-          <mat-list-item><a [routerLink]="['/worlds', worldId, 'elections', story.election.id]">
-            <pt-icon name="election"/>
-            {{ story.election.name }}</a></mat-list-item>
-        }
-        @if (story.government) {
-          <mat-list-item><a [routerLink]="['/worlds', worldId, 'governments', story.government.id]"><img
-            [attr.src]="story.government | governmentFlagUrl: {id: worldId}"
-            class="flag-image-xs"> {{ story.government.title }}</a></mat-list-item>
-        }
-        @if (story.bill) {
-          <mat-list-item><a [routerLink]="['/worlds', worldId, 'bills', story.bill.id]">
-            <pt-icon name="bill"/>
-            {{ story.bill.title }}</a></mat-list-item>
-        }
-        @if (story.body) {
-          <mat-list-item><a [routerLink]="['/worlds', worldId, 'bodys', story.body.id]">
-            <pt-icon name="body"/>
-            {{ story.body.title }}</a></mat-list-item>
-        }
-        @if (story.office) {
-          <mat-list-item><a [routerLink]="['/worlds', worldId, 'offices', story.office.id]">
-            <pt-icon name="office"/>
-            {{ story.office.title }}</a></mat-list-item>
-        }
-        @if (story.party) {
-          <mat-list-item><a [routerLink]="['/worlds', worldId, 'parties', story.party.id]">
-            <pt-icon name="party"/>
-            {{ story.party.name }}</a></mat-list-item>
-        }
-        @if (story.person) {
-          <mat-list-item><a [routerLink]="['/worlds', worldId, 'persons', story.person.id]">
-            <pt-portrait [person]="story.person" [tick]="story.tick.value" [world]="{id: worldId, name: ''}" size="xs"/>
-            {{ story.person.fullName }}</a></mat-list-item>
-        }
-        @if (story.territory) {
-          <mat-list-item><a [routerLink]="['/worlds', worldId, 'territories', story.territory.id]">
-            <pt-icon name="territory"/>
-            {{ story.territory.name }}</a></mat-list-item>
-        }
-      </mat-list>
-    </div>
-  </div>
-}
+  }
+</div>

@@ -134,6 +134,8 @@ mat-toolbar {
 h1 {
   border-bottom: 1px solid var(--mat-sys-outline);
   padding-bottom: 15px;
+  padding-top: 15px;
+  margin: 0;
 }
 
 h1, h2 {
@@ -143,6 +145,18 @@ h1, h2 {
 
 a {
   text-decoration: none;
+}
+
+.page-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-basis: auto;
+  flex-grow: 1;
+  flex-shrink: 0;
+  height: calc(100vh - 64px - 10px);
+  overflow-x: clip;
+  overflow-y: hidden;
 }
 
 .clickable {
@@ -197,6 +211,12 @@ a {
 
 .border-top {
   border-top: 1px solid var(--mat-sys-outline);
+}
+
+.flex-expand {
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
 }
 
 .flex-horizontal-centered {

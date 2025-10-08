@@ -1,122 +1,124 @@
-@let election = election$?.object | async;
-@if (worldId && election) {
-  <ng-template #resultTable let-data="data" let-hasCandidates="hasCandidates" let-hasSeats="hasSeats">
-    <table class="compact-table">
-      <thead>
-      <tr>
-        <th class="text-left" colspan="2">Party</th>
-        @if (hasCandidates) {
-          <th class="text-left" colspan="1">Candidate</th>
-        }
-        <th class="text-center" colspan="2">Votes</th>
-        @if (hasSeats) {
-          <th class="text-center" colspan="2">Seats</th>
-        }
-      </tr>
-      </thead>
-      <tbody>
-        @for (result of data.partyResults; track result.party.id) {
-          <tr>
-            <td>
-              <pt-color-box [color]="result.party.color"/>
-            </td>
-            <td>
-              <a [routerLink]="['/worlds', worldId, 'parties', result.party.id]">
-                {{ result.party.name }}
-              </a>
-            </td>
-            @if (hasCandidates) {
-              <td class="text-left">
-                @if (result.candidates && result.candidates.length > 0) {
-                  @let candidate = result.candidates[0];
-                  <a [routerLink]="['/worlds', worldId, 'persons', candidate.id]">
-                    <pt-portrait
-                      [party]="result.party"
-                      [person]="candidate"
-                      [tick]="election.tick.value"
-                      [world]="{id: worldId, name: ''}"
-                      size="sm"/>
-                    {{ candidate.fullName }}
-                  </a>
-                }
+<div class="page-content">
+  @let election = election$?.object | async;
+  @if (worldId && election) {
+    <ng-template #resultTable let-data="data" let-hasCandidates="hasCandidates" let-hasSeats="hasSeats">
+      <table class="compact-table">
+        <thead>
+        <tr>
+          <th class="text-left" colspan="2">Party</th>
+          @if (hasCandidates) {
+            <th class="text-left" colspan="1">Candidate</th>
+          }
+          <th class="text-center" colspan="2">Votes</th>
+          @if (hasSeats) {
+            <th class="text-center" colspan="2">Seats</th>
+          }
+        </tr>
+        </thead>
+        <tbody>
+          @for (result of data.partyResults; track result.party.id) {
+            <tr>
+              <td>
+                <pt-color-box [color]="result.party.color"/>
               </td>
-            }
-            <td class="text-right">{{ result.votes | number: '1.0-0' }}</td>
-            <td class="text-right">{{ (result.votes / data.totalVotes) | percent: '1.1-1' }}</td>
-            @if (hasSeats) {
-              <td class="text-right">{{ result.seats | number: '1.0-0' }}</td>
-              <td class="text-right">{{ (result.seats / data.totalSeats) | percent: '1.1-1' }}</td>
-            }
-          </tr>
-        }
-      <tr>
-        <td colspan="1">
-          <pt-color-box color="invalid"/>
-        </td>
-        <td colspan="1"><i>Invalid</i></td>
-        @if (hasCandidates) {
-          <td class="text-left" colspan="1"></td>
-        }
-        <td class="text-right">{{ data.invalidVotes | number: '1.0-0' }}</td>
-        <td class="text-right">{{ (data.invalidVotes / data.totalVotes) | percent: '1.1-1' }}</td>
-        @if (hasSeats) {
-          <td colspan="1"></td>
-          <td colspan="1"></td>
-        }
-      </tr>
-      </tbody>
-      <tfoot>
-      <tr class="border-top">
-        <td colspan="2"><b>Total</b></td>
-        @if (hasCandidates) {
-          <td class="text-left" colspan="1"></td>
-        }
-        <td class="text-right">{{ data.totalVotes | number: '1.0-0' }}</td>
-        <td class="text-right">100.0%</td>
-        @if (hasSeats) {
-          <td class="text-right">{{ data.totalSeats | number: '1.0-0' }}</td>
+              <td>
+                <a [routerLink]="['/worlds', worldId, 'parties', result.party.id]">
+                  {{ result.party.name }}
+                </a>
+              </td>
+              @if (hasCandidates) {
+                <td class="text-left">
+                  @if (result.candidates && result.candidates.length > 0) {
+                    @let candidate = result.candidates[0];
+                    <a [routerLink]="['/worlds', worldId, 'persons', candidate.id]">
+                      <pt-portrait
+                        [party]="result.party"
+                        [person]="candidate"
+                        [tick]="election.tick.value"
+                        [world]="{id: worldId, name: ''}"
+                        size="sm"/>
+                      {{ candidate.fullName }}
+                    </a>
+                  }
+                </td>
+              }
+              <td class="text-right">{{ result.votes | number: '1.0-0' }}</td>
+              <td class="text-right">{{ (result.votes / data.totalVotes) | percent: '1.1-1' }}</td>
+              @if (hasSeats) {
+                <td class="text-right">{{ result.seats | number: '1.0-0' }}</td>
+                <td class="text-right">{{ (result.seats / data.totalSeats) | percent: '1.1-1' }}</td>
+              }
+            </tr>
+          }
+        <tr>
+          <td colspan="1">
+            <pt-color-box color="invalid"/>
+          </td>
+          <td colspan="1"><i>Invalid</i></td>
+          @if (hasCandidates) {
+            <td class="text-left" colspan="1"></td>
+          }
+          <td class="text-right">{{ data.invalidVotes | number: '1.0-0' }}</td>
+          <td class="text-right">{{ (data.invalidVotes / data.totalVotes) | percent: '1.1-1' }}</td>
+          @if (hasSeats) {
+            <td colspan="1"></td>
+            <td colspan="1"></td>
+          }
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr class="border-top">
+          <td colspan="2"><b>Total</b></td>
+          @if (hasCandidates) {
+            <td class="text-left" colspan="1"></td>
+          }
+          <td class="text-right">{{ data.totalVotes | number: '1.0-0' }}</td>
           <td class="text-right">100.0%</td>
+          @if (hasSeats) {
+            <td class="text-right">{{ data.totalSeats | number: '1.0-0' }}</td>
+            <td class="text-right">100.0%</td>
+          }
+        </tr>
+        </tfoot>
+      </table>
+    </ng-template>
+
+    @let hasSeats = election.totalSeats > 0;
+    @let hasCandidates = election.body.type === BodyType.Ruler;
+
+    <h1> {{ election.title }}</h1>
+
+    @if (election.story) {
+      <p>
+        <b>Coverage: </b>
+        <a [routerLink]="['/worlds', worldId, 'stories', election.story.id]">{{ election.story.title }}</a>
+      </p>
+    }
+
+    <h3>Total Results</h3>
+    <ng-container
+      [ngTemplateOutletContext]="{data: election, hasSeats, hasCandidates}"
+      [ngTemplateOutlet]="resultTable"
+    ></ng-container>
+
+    @if (election.constituencies.length === 1) {
+      <h3>Results per Territory</h3>
+      @let constituency = election.constituencies[0];
+      <mat-accordion>
+        @for (result of constituency.territories; track result) {
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span class="nowrap">{{ result.territory.name }}</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ng-container
+              [ngTemplateOutletContext]="{data: result, hasSeats, hasCandidates: false}"
+              [ngTemplateOutlet]="resultTable"
+            ></ng-container>
+          </mat-expansion-panel>
         }
-      </tr>
-      </tfoot>
-    </table>
-  </ng-template>
-
-  @let hasSeats = election.totalSeats > 0;
-  @let hasCandidates = election.body.type === BodyType.Ruler;
-
-  <h1> {{ election.title }}</h1>
-
-  @if (election.story) {
-    <p>
-      <b>Coverage: </b>
-      <a [routerLink]="['/worlds', worldId, 'stories', election.story.id]">{{ election.story.title }}</a>
-    </p>
+      </mat-accordion>
+    }
   }
-
-  <h3>Total Results</h3>
-  <ng-container
-    [ngTemplateOutletContext]="{data: election, hasSeats, hasCandidates}"
-    [ngTemplateOutlet]="resultTable"
-  ></ng-container>
-
-  @if (election.constituencies.length === 1) {
-    <h3>Results per Territory</h3>
-    @let constituency = election.constituencies[0];
-    <mat-accordion>
-      @for (result of constituency.territories; track result) {
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <span class="nowrap">{{ result.territory.name }}</span>
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <ng-container
-            [ngTemplateOutletContext]="{data: result, hasSeats, hasCandidates: false}"
-            [ngTemplateOutlet]="resultTable"
-          ></ng-container>
-        </mat-expansion-panel>
-      }
-    </mat-accordion>
-  }
-}
+</div>

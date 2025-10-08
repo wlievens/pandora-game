@@ -1,8 +1,17 @@
 @use '@angular/material' as mat;
 
-.root-content-container {
-  margin: 40px;
+.router-outlet-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
   max-width: 1600px;
+  padding: 0;
+  height: calc(100% - 64px);
+  margin-top: 0;
   margin-left: auto;
   margin-right: auto;
 }
