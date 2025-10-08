@@ -1,9 +1,13 @@
 <div class="page-content">
-  @let nations = nations$ | async;
-  @for (nation of nations; track nation.id) {
-    <button [routerLink]="['/worlds', worldId, 'governments', nation.id]" mat-raised-button>
-      <img [attr.src]="nation?.flag | flagUrl" class="flag-image-sm">
-      {{ nation.title }}
-    </button>
-  }
+  <h1>Nations</h1>
+
+  <div class="flex-horizontal-centered">
+    @let nations = nations$ | async;
+    @for (nation of nations; track nation.id) {
+      <button [routerLink]="['/worlds', worldId, 'governments', nation.id]" mat-raised-button>
+        <img [attr.src]="nation?.flag | flagUrl" class="flag-image-sm">
+        {{ nation.title }}
+      </button>
+    }
+  </div>
 </div>

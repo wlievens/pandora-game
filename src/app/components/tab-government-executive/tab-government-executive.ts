@@ -4,7 +4,6 @@ import {RouterLink} from '@angular/router';
 import {Observable, of} from 'rxjs';
 import {BodyGameFull, BodyType, GameBodyService, GovernmentGameFull} from '../../../api';
 import {FindTenurePipe} from '../../pipes/find-tenure-pipe';
-import {PortraitUrlPipe} from '../../pipes/portrait-url-pipe';
 import {ColorBox} from '../color-box/color-box';
 import {Portrait} from '../portrait/portrait';
 
@@ -14,7 +13,6 @@ import {Portrait} from '../portrait/portrait';
     AsyncPipe,
     FindTenurePipe,
     ColorBox,
-    PortraitUrlPipe,
     RouterLink,
     Portrait,
   ],

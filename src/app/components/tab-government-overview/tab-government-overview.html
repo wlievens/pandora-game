@@ -1,11 +1,13 @@
+<h2>Overview</h2>
+
 @if (government) {
   @let world = government.world;
 
   <div class="flex-horizontal-centered">
-    <img class="flag-image-lg" [attr.src]="government | governmentFlagUrl: world">
+    <img [attr.src]="government | governmentFlagUrl: world" class="flag-image-lg">
 
     <div style="width: 300px; height: 300px;">
-      <pt-geo-map [projection]="'globe'" [center]="government.centroid || {lon: 0, lat: 0}" [fixed]="true"
+      <pt-geo-map [center]="government.centroid || {lon: 0, lat: 0}" [fixed]="true" [projection]="'globe'"
                   class="map-container">
         <pt-geo-map-layer-background></pt-geo-map-layer-background>
         <pt-geo-map-layer-world-territories
@@ -13,8 +15,8 @@
           [worldId]="world.id"
         ></pt-geo-map-layer-world-territories>
         <pt-geo-map-layer-world-nations
-          [worldId]="world.id"
           [highlights]="[government]"
+          [worldId]="world.id"
         ></pt-geo-map-layer-world-nations>
         <pt-geo-map-layer-grid></pt-geo-map-layer-grid>
       </pt-geo-map>
@@ -30,8 +32,8 @@
         [worldId]="world.id"
       ></pt-geo-map-layer-world-territories>
       <pt-geo-map-layer-world-nations
-        [worldId]="world.id"
         [highlights]="[government]"
+        [worldId]="world.id"
       ></pt-geo-map-layer-world-nations>
       <pt-geo-map-layer-grid></pt-geo-map-layer-grid>
     </pt-geo-map>
