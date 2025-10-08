@@ -50,7 +50,9 @@
           Territories
         </ng-template>
 
-        <pt-tab-government-territories [government]="government"></pt-tab-government-territories>
+        <ng-template matTabContent>
+          <pt-tab-government-territories [government]="government"></pt-tab-government-territories>
+        </ng-template>
       </mat-tab>
 
       <mat-tab>
@@ -58,7 +60,9 @@
           Economy
         </ng-template>
 
-        <pt-tab-government-economy [government]="government"></pt-tab-government-economy>
+        <ng-template matTabContent>
+          <pt-tab-government-economy [government]="government"></pt-tab-government-economy>
+        </ng-template>
       </mat-tab>
     </mat-tab-group>
   }

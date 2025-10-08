@@ -1,0 +1,18 @@
+<div>
+  <div class="flex-horizontal-centered">
+    @for (product of products; track product.key) {
+      <div class="flex-vertical-centered" style="border: 1px solid red;">
+        <label>{{ product.name }}</label>
+        <img [attr.src]="product.symbol | symbolUrl" class="symbol-sm">
+      </div>
+    }
+  </div>
+  <div class="flex-horizontal-centered">
+    @for (industry of industries; track industry.key) {
+      <div class="flex-vertical-centered" style="border: 1px solid red;">
+        <label>{{ industry.name }}</label>
+        <img [attr.src]="industry.symbol | symbolUrl" class="symbol-sm">
+      </div>
+    }
+  </div>
+</div>
