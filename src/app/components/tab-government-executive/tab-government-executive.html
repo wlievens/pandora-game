@@ -12,7 +12,7 @@
               <a [routerLink]="['/worlds', government.world.id, 'elections', election.id]">{{ election.name }}</a>
             </p>
           }
-          <table class="compact-table wide">
+          <table class="compact-table narrow">
             <tbody>
               @for (office of body.offices; track office.id) {
                 <tr>
@@ -32,7 +32,7 @@
                       }
                     }
                   </td>
-                  <td class="wide text-left">
+                  <td class="narrow">
                     @if (term) {
                       @let tenure = term.tenures | findTenure: office.id;
                       @if (tenure) {
