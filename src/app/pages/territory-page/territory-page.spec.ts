@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TerritoryPage } from './territory-page';
+import {TerritoryPage} from './territory-page';
 
 describe('TerritoryPage', () => {
   let component: TerritoryPage;
@@ -10,7 +10,7 @@ describe('TerritoryPage', () => {
     await TestBed.configureTestingModule({
       imports: [TerritoryPage]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(TerritoryPage);
     component = fixture.componentInstance;

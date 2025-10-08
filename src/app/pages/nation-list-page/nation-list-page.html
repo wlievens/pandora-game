@@ -1,7 +1,7 @@
 @let nations = nations$ | async;
 @for (nation of nations; track nation.id) {
-  <button mat-raised-button [routerLink]="['/worlds', worldId, 'governments', nation.id]">
-    <img class="flag-image-sm" [attr.src]="nation?.flag | flagUrl">
+  <button [routerLink]="['/worlds', worldId, 'governments', nation.id]" mat-raised-button>
+    <img [attr.src]="nation?.flag | flagUrl" class="flag-image-sm">
     {{ nation.title }}
   </button>
 }

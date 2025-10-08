@@ -1,9 +1,9 @@
 @let government = government$?.object | async;
 @if (government) {
   <h1>
-    <img class="flag-image-xs" [attr.src]="government | governmentFlagUrl: government.world">
+    <img [attr.src]="government | governmentFlagUrl: government.world" class="flag-image-xs">
     {{ government.title }}
-    <img class="flag-image-xs" [attr.src]="government | governmentFlagUrl: government.world">
+    <img [attr.src]="government | governmentFlagUrl: government.world" class="flag-image-xs">
   </h1>
   <mat-tab-group>
     <mat-tab>

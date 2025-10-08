@@ -1,7 +1,7 @@
 @let person = person$?.object | async;
 @if (person) {
   <h1> {{ person.firstName }} {{ person.lastName }}</h1>
-  <pt-portrait [person]="person" [world]="person.world" [party]="person.party" size="lg"/>
+  <pt-portrait [party]="person.party" [person]="person" [world]="person.world" size="lg"/>
 
   <h3>Personalia</h3>
   <table class="compact-table">
@@ -57,7 +57,7 @@
       <td class="border-right"><b>Facets</b></td>
       <td>
         @for (facet of person.facets; track facet) {
-          <img [attr.src]="facet.symbol | symbolUrl" class="symbol-sm" [matTooltip]="facet.name">
+          <img [attr.src]="facet.symbol | symbolUrl" [matTooltip]="facet.name" class="symbol-sm">
         }
       </td>
     </tr>
