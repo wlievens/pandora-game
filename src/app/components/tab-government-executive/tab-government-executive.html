@@ -1,82 +1,82 @@
 @if (government) {
-  @for (body of [bodyRuler$ | async, bodyCabinet$ | async]; track body?.id) {
-    @if (body) {
-      @let term = body.currentTerm;
-      @if (term) {
-        <h2>{{ term.title }}</h2>
-      } @else {
-        <h2>{{ body.title }}</h2>
-      }
-      @let election = term?.election;
-      @if (election) {
-        <p>
-          Election:
-          <a [routerLink]="['/worlds', government.world.id, 'elections', election.id]">{{ election.name }}</a>
-        </p>
-      }
-      <table class="compact-table">
-        <tbody>
-          @for (office of body.offices; track office.id) {
-            <tr>
-              <td style="width: 250px;"><b>{{ office.name }}</b></td>
-              <td>
-                @if (term) {
-                  @let tenure = term.tenures | findTenure: office.id;
-                  @if (tenure) {
-                    @let person = tenure.person;
-                    @if (person) {
-                      <pt-portrait
-                        size="sm"
-                        [person]="person"
-                        [party]="tenure.party"
-                        [world]="government.world"/>
-                    }
-                  }
-                }
-              </td>
-              <td>
-                @if (term) {
-                  @let tenure = term.tenures | findTenure: office.id;
-                  @if (tenure) {
-                    @let person = tenure.person;
-                    @if (person) {
-                      <a [routerLink]="['/worlds', government.world.id, 'persons', person.id]">
-                        {{ person.firstName }} {{ person.lastName }}
-                      </a>
-                    } @else {
-                      <i>Vacant</i>
-                    }
-                  } @else {
-                    <i>Vacant</i>
-                  }
-                } @else {
-                  <i>Not Instituted</i>
-                }
-              </td>
-              <td>
-                @if (term) {
-                  @let tenure = term.tenures | findTenure: office.id;
-                  @if (tenure) {
-                    @let party = tenure.party;
-                    @if (party) {
-                      <a [routerLink]="['/worlds', government.world.id, 'parties', party.id]">
-                        <pt-color-box [color]="party.color"/>
-                        {{ party.name }}
-                      </a>
-                    } @else {
-                      <i>Vacant</i>
-                    }
-                  } @else {
-                    <i>Vacant</i>
-                  }
-                } @else {
-                  <i>Not Instituted</i>
-                }
-              </td>
-            </tr>
+  <div class="flex-horizontal-centered">
+    @for (body of [bodyRuler$ | async, bodyCabinet$ | async]; track body?.id) {
+      @if (body) {
+        <div class="flex-expand">
+          @let term = body.currentTerm;
+          <h2>{{ body.title }}</h2>
+          @let election = term?.election;
+          @if (election) {
+            <p>
+              Election:
+              <a [routerLink]="['/worlds', government.world.id, 'elections', election.id]">{{ election.name }}</a>
+            </p>
           }
-        </tbody>
-      </table>
+          <table class="compact-table wide">
+            <tbody>
+              @for (office of body.offices; track office.id) {
+                <tr>
+                  <td class="narrow"><b>{{ office.name }}</b></td>
+                  <td class="narrow">
+                    @if (term) {
+                      @let tenure = term.tenures | findTenure: office.id;
+                      @if (tenure) {
+                        @let person = tenure.person;
+                        @if (person) {
+                          <pt-portrait
+                            size="sm"
+                            [person]="person"
+                            [party]="tenure.party"
+                            [world]="government.world"/>
+                        }
+                      }
+                    }
+                  </td>
+                  <td class="wide text-left">
+                    @if (term) {
+                      @let tenure = term.tenures | findTenure: office.id;
+                      @if (tenure) {
+                        @let person = tenure.person;
+                        @if (person) {
+                          <a [routerLink]="['/worlds', government.world.id, 'persons', person.id]">
+                            {{ person.firstName }} {{ person.lastName }}
+                          </a>
+                        } @else {
+                          <i>Vacant</i>
+                        }
+                      } @else {
+                        <i>Vacant</i>
+                      }
+                    } @else {
+                      <i>Not Instituted</i>
+                    }
+                  </td>
+                  <td class="narrow">
+                    @if (term) {
+                      @let tenure = term.tenures | findTenure: office.id;
+                      @if (tenure) {
+                        @let party = tenure.party;
+                        @if (party) {
+                          <a [routerLink]="['/worlds', government.world.id, 'parties', party.id]">
+                            <pt-color-box [color]="party.color"/>
+                            {{ party.name }}
+                          </a>
+                        } @else {
+                          <i>Vacant</i>
+                        }
+                      } @else {
+                        <i>Vacant</i>
+                      }
+                    } @else {
+                      <i>Not Instituted</i>
+                    }
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
     }
-  }
+  </div>
 }
